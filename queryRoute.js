@@ -3,7 +3,7 @@ const { MongoClient } = require('mongodb');
 const uri = 'mongodb://localhost:27017';
 const client = new MongoClient(uri);
 
-async function getRoute(origin, destination) {
+export async function getRoute(origin, destination) {
   try {
     await client.connect();
     const database = client.db('routes');

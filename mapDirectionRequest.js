@@ -3,7 +3,7 @@ const googleMapsClient = require('@google/maps').createClient({
   Promise: Promise // Use native promises
 });
 
-async function getDirections(origin, destination, waypoints) {
+export async function getDirections(origin, destination, waypoints) {
   const requestOptions = {
     origin: origin,
     destination: destination,

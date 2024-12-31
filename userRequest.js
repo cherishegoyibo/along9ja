@@ -1,28 +1,35 @@
 // include files
+import { getDirections } from './mapDirectionRequest.js';
+import { getStreetName } from './getStreetName.js';
+import { getRoute } from './getRoute.js';
 
-const userLocation = req.body.cord; // cordinate from form
-const userLocationStreet = getStreetName(userLocation.lat, userLocation.lon);
-const destination = req.body.destination;
-// check from database user location and destination and pull the waypoint/stooppoint
-const route = getRoute(userLocationStreet, destination);
-const waypoints = route.waypoints;
-try {
-    mapout = getDirections(userLocation, destination, waypoints={});
-    if (mapout)
-        return {mapout, waypoints};
+export default function userRequest(userLocation, destination) {
+    lat = userLocation.coords.latitude || userLocation.latitude;
+    lon = userLocation.coords.longitude || userLocation.longitude;
+    const userLocationStreet = getStreetName(lat, lon);
+    // const destination = req.body.destination;
+    // check from database user location and destination and pull the waypoint/stooppoint
+    const route = getRoute(userLocationStreet, destination);
+    const waypoints = route.waypoints;
+    try {
+        mapout = getDirections(userLocation, destination, waypoints={});
+        if (mapout)
+            return {mapout, waypoints};
+    }
+    catch(error) {
+        console.log(error);
+    }
 }
-catch(error) {
-    console.log(error);
-}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-from, to, waypoints, instructions
+// DATABASE: , to, waypoints, instructions
 
 // Sample waypoint data with instructions
-const waypoints = [
-  { lat: 37.7749, lng: -122.4194, instruction: 'Pick up package at this location.' },
-  {address: 'Finance Bus Stop, Abuja', instruction: 'Deliver package to this address.' },
-  { lat: 37.7833, lng: -122.4008, instruction: 'Deliver package to this address.' },
-];
+// const waypoints = [
+//   { lat: 37.7749, lng: -122.4194, instruction: 'Pick up package at this location.' },
+//   {address: 'Finance Bus Stop, Abuja', instruction: 'Deliver package to this address.' },
+//   { lat: 37.7833, lng: -122.4008, instruction: 'Deliver package to this address.' },
+// ];
 
 // app.get('/directions', async (req, res) => {
 //   const origin = req.query.origin;
