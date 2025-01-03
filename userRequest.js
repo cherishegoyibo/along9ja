@@ -3,7 +3,7 @@ import { getDirections } from './mapDirectionRequest.js';
 import { getStreetName } from './getStreetName.js';
 import { getRoute } from './getRoute.js';
 
-export default function userRequest(userLocation, destination) {
+export default async function userRequest(userLocation, destination) {
     lat = userLocation.coords.latitude || userLocation.latitude;
     lon = userLocation.coords.longitude || userLocation.longitude;
     const userLocationStreet = getStreetName(lat, lon);
@@ -12,7 +12,7 @@ export default function userRequest(userLocation, destination) {
     const route = getRoute(userLocationStreet, destination);
     const waypoints = route.waypoints;
     try {
-        mapout = getDirections(userLocation, destination, waypoints={});
+        mapout = await getDirections(userLocation, destination, waypoints={});
         if (mapout)
             return {mapout, waypoints};
     }
