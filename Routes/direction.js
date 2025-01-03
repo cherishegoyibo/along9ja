@@ -23,3 +23,11 @@ app.route('/direction')
             res.status(500).send('Error, try again.')
         }
     });
+
+app.route('/direction/new')
+    .get((req, res) => {
+        res.send(`GET request to the new direction page`);
+    })
+    .post((req, res) => {
+        res.send(`POST request to the new direction page`);
+    });
