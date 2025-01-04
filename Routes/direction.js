@@ -29,5 +29,9 @@ app.route('/direction/new')
         res.send(`GET request to the new direction page`);
     })
     .post((req, res) => {
-        res.send(`POST request to the new direction page`);
+        const requestData = JSON.stringify(req.body);
     });
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
