@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 export function getStreetName(lat, lon) {
     const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
     axios.get(url)

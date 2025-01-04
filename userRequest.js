@@ -1,6 +1,14 @@
 import { getDirections } from './mapDirectionRequest.js';
-import { getStreetName } from './getStreetName.js';
-import { getRoute } from './getRoute.js';
+import { getStreetName } from './getUserAddress.js';
+// import { getRoute } from './getRoute.js';
+
+// sample data start
+// const waypoints = [
+//   { lat: 37.7749, lng: -122.4194, instruction: 'Pick up package at this location.' },
+//   {address: 'Finance Bus Stop, Abuja', instruction: 'Deliver package to this address.' },
+//   { lat: 37.7833, lng: -122.4008, instruction: 'Deliver package to this address.' },
+// ];
+// sample end
 
 // Helper function to get user location coordinates
 function getUserCoordinates(userLocation) {
@@ -18,6 +26,7 @@ async function getWaypoints(userLocationStreet, destination) {
     } catch (error) {
         throw new Error('Error getting waypoints: ' + error.message);
     }
+    return waypoints;
 }
 
 // Main userRequest function
