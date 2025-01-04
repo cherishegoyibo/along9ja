@@ -1,6 +1,6 @@
 // include file
-import  { userRequest } from '../userRequest'
-const express = require('express');
+import  userRequest from '../userRequest.js'
+import express from 'express';
 
 const app = express();
 
