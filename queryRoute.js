@@ -8,6 +8,7 @@ export async function getRoute(origin, destination) {
     await client.connect();
     const database = client.db('routes');
     const collection = database.collection('route');
+    const destination = `(${destination.join(',')})`;
     const query = { origin, destination };
     const route = await collection.findOne(query);
     return route;

@@ -17,7 +17,7 @@ app.route('/direction')
         const destination = requestData.destination;
         try {
             const sender = await userRequest(userLocation, destination);
-            res.send(sender);
+            res.send(JSON.stringify.sender);
         }
         catch(err) {
             res.status(500).send('Error, try again.')

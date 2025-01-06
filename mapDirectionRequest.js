@@ -7,7 +7,11 @@ const directionClient = Directions({
 export async function getDirections(origin, destination, waypoints) {
   directionClient.getDirections({
     profile: 'driving',
-    waypoints:[ {origin}, {waypoints}, {destination}],
+    waypoints: [
+      { coordinates: origin },
+      ...waypoints.map(wp => ({ coordinates: wp })),
+      { coordinates: destination }
+    ],
     geometries: 'geojson'
   })
   .send()
@@ -18,8 +22,7 @@ export async function getDirections(origin, destination, waypoints) {
     console.error('Error fetching directions:', error);
     return { error: 'Failed to fetch directions' };
   });
-
-
+}
   // const requestOptions = {
   //   origin: origin,
   //   destination: destination,
@@ -76,4 +79,4 @@ export async function getDirections(origin, destination, waypoints) {
   //   console.error('Error fetching directions:', error);
   //   res.status(500).json({ error: 'Failed to fetch directions' });
   // };
-}
+// }

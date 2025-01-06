@@ -14,7 +14,11 @@ import { getStreetName } from './getUserAddress.js';
 function getUserCoordinates(userLocation) {
     const lat = userLocation.coords.latitude || userLocation.latitude;
     const lon = userLocation.coords.longitude || userLocation.longitude;
-    return { lat, lon };
+    return [lat, lon];
+}
+
+function getCoordinatesFromWaypoints(waypoints) {
+    return waypoints.map(waypoint => [waypoint.lat, waypoint.lng]);
 }
 
 // Function to get waypoints
@@ -26,20 +30,22 @@ async function getWaypoints(userLocationStreet, destination) {
     } catch (error) {
         throw new Error('Error getting waypoints: ' + error.message);
     }
-    return waypoints;
 }
 
 // Main userRequest function
 export default async function userRequest(userLocation, destination) {
     try {
-        const { lat, lon } = getUserCoordinates(userLocation);
-        const userLocationStreet = await getStreetName(lat, lon);
+        const userLocation = getUserCoordinates(userLocation);
+        const destination = getUserCoordinates(destination);
+        const userLocationStreet = getStreetName(userLocation[0], userLocation[1]);
 
         // Get the waypoints from the route
         const waypoints = await getWaypoints(userLocationStreet, destination);
 
+        const getWaypointsCoords = getCoordinatesFromWaypoints(waypoints);
+
         // Fetch the directions from Google Maps (or other map service)
-        const mapout = await getDirections(userLocation, destination, waypoints);
+        const mapout = await getDirections(userLocation, destination, getWaypointsCoords);
         
         // Return the directions and waypoints
         if (mapout) {
