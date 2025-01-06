@@ -1,8 +1,3 @@
-import {Client} from "@googlemaps/google-maps-services-js";
-const googleMapsClient = new Client({
-  key: 'YOUR_API_KEY',
-  Promise: Promise // Use native promises
-});
 
 export async function getDirections(origin, destination, waypoints) {
   const requestOptions = {
