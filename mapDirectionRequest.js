@@ -7,7 +7,7 @@ const directionClient = Directions({
 export async function getDirections(origin, destination, waypoints) {
   directionClient.getDirections({
     profile: 'driving',
-    waypoints: waypoints,
+    waypoints:[ {origin}, {waypoints}, {destination}],
     geometries: 'geojson'
   })
   .send()
