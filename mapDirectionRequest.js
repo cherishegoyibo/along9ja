@@ -1,11 +1,12 @@
-import { Directions } from "@mapbox/mapbox-sdk/services/directions";
-
+import Directions from "@mapbox/mapbox-sdk/services/directions.js";
+import dotenv from 'dotenv';
+dotenv.config();
 const directionClient = Directions({
-  acessToken: 'API_TOKEN'
+  accessToken: process.env.API_TOKEN
 });
 
 export async function getDirections(origin, destination, waypoints) {
-  directionClient.getDirections({
+  return directionClient.getDirections({
     profile: 'driving',
     waypoints: [
       { coordinates: origin },
@@ -23,6 +24,7 @@ export async function getDirections(origin, destination, waypoints) {
     return { error: 'Failed to fetch directions' };
   });
 }
+
   // const requestOptions = {
   //   origin: origin,
   //   destination: destination,

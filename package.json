@@ -19,6 +19,8 @@
   "homepage": "https://github.com/cherishegoyibo/along9ja#readme",
   "dependencies": {
     "@googlemaps/google-maps-services-js": "^3.4.0",
-    "@mapbox/mapbox-sdk": "^0.16.1"
+    "@mapbox/mapbox-sdk": "^0.16.1",
+    "dotenv": "^16.4.7",
+    "node-fetch": "^3.3.2"
   }
 }
