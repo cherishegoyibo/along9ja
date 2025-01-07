@@ -3,9 +3,9 @@
 /*# sourceMappingURL=normalize.min.css.map */
 
 :root {
-
     /* COLOR AREA */
     --color-primary: #ffc700;
+    --color-secondary: #a0a0a0;
     --color-black: #090909;
     --color-white: #ffffff;
     --color-light-grey: #f3f3f3;
@@ -30,7 +30,7 @@
     --nav-item-letter-spacing: 0.04rem;
     --nav-item-display: inline-block;
     --nav-item-margin: 0 0 3rem 0;
-    --nav-item-link-hover: var(--color-primary);
+    --nav-item-link-hover: var(--color-secondary);
 
     /* LINE AREA */
     --line-height-small: 1.2;
@@ -38,6 +38,26 @@
     --line-height-big: 1.8;
 
     --section-header-align: center;
+
+    /* BUTTON AREA */
+    --button-display: inline-block;
+    --button-padding: 0.1rem 2rem;
+    --button-border: 0.1rem solid var(--color-primary);
+    --button-radius: 30px;
+    --button-color: var(--color-black);
+    --button-text-decoration: none;
+    --button-font-size: var(--font-size-medium);
+    --button-hover-color: var(--color-white);
+    --button-hover-text-decoration: none;
+    --button-hover-background: var(--color-primary);
+
+    /* HEADER AREA */
+    --header-padding: 4rem 0 0;
+    --header-logo-position: relative;
+    --header-logo-link-display: inline-block;
+    --header-logo-link-position: absolute;
+    --header-logo-link-top: 1rem;
+    --header-logo-link-left: 0.1rem;
 }
 
 html {
@@ -67,7 +87,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a:link {
-    color: var(--text-color);
+    color: var(--color-dark-grey);
     text-decoration: none;
 }
 
@@ -83,25 +103,64 @@ a:active {
     background-color: var(--color-light-grey);
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: var(--color-light-grey);
+    height: 80px;
+}
+
+.header-logo {
+    flex: 0 0 auto;
+    position: var(--header-logo-position);
+}
+
+.header-logo a {
+    display: var(--header-logo-link-display);
+    position: var(--header-logo-link-position);
+    top: var(--header-logo-link-top);
+    left: var(--header-logo-link-left);
+}
+
+button {
+    display: var(--button-display);
+    border-radius: var(--button-radius);
+    padding: var(--button-padding);
+    border: var(--button-border);
+    font-size: var(--button-font-size);
+    color: var(--button-color);
+    text-decoration: var(--button-text-decoration);
+}
+
+button:hover {
+    color: var(--color-black) !important;
+    text-decoration: var(--button-hover-text-decoration);
+ 
+}
+
 .navbar-menu {
-    float: right;
     margin: 0;
     padding: 0;
     text-align: center;
+    align-items: center;
+    justify-content: flex-end;
+    float: right;
 }
 
 .nav {
-    margin: 0;
-    padding: 0;
+    display: inline-block;
     list-style: none;
     text-align: center;
+    gap: 1.5rem;
 
     font-family: var(--nav-item-font-family);
     font-weight: var(--nav-item-font-weight);
     font-size: var(--nav-item-font-size);
 }
 
-.nav .nav-item {
+.nav-item {
     font-family: var(--nav-item-font-family);
     font-weight: var(--nav-item-font-weight);
     font-size: var(--nav-item-font-size);
@@ -110,13 +169,27 @@ a:active {
     margin: var(--nav-item-margin);
 }
 
-.nav .nav-link {
+.nav-link {
     display: block;
     padding: 0.5rem 1rem;
 }
 
-.nav .nav-link:hover {
+.nav-link:hover {
     color: var(--nav-item-link-hover);
+}
+
+.nav-item-link-hover {  
+    color: var(--color-white);  
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-white);
+    width: 0;
+    height: 20%;
 }
 
 .visually-hidden {
@@ -124,7 +197,7 @@ a:active {
 }
 
 .container {
-    width: 960px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    height: 85px;
+    background-color: #f3f3f3;
 }
