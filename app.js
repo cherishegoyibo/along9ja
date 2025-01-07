@@ -1,12 +1,13 @@
-const express = require('express');
-const connectDB = require('./db_model/database');
-const userRoutes = require('./routes/gen1');
+import express from 'express';
 
+import connectDB from './config/mongo.js';
+import routes from './routes/gen1.js'
 
-const app = express();
 connectDB();
 
-app.use('/api', userRoutes);
+const app = express();
+app.use(express.json());
+app.use('/api/along9ja', routes);
 
 
 
@@ -21,6 +22,12 @@ app.use('/api', userRoutes);
 
 
 
-app.listen(3000, () => {
-    console.log("Server is running on http://localhost:3000");
+
+
+
+
+const port = 5480;
+
+app.listen(port, () => {
+    console.log(`Server is running on ${port}`);
   });
