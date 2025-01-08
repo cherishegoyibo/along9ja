@@ -1,65 +1,65 @@
 import Directions from "@mapbox/mapbox-sdk/services/directions.js";
 import dotenv from 'dotenv';
 dotenv.config();
-const directionClient = Directions({
-  accessToken: process.env.API_TOKEN
-});
+// const directionClient = Directions({
+//   accessToken: process.env.API_TOKEN
+// });
 
 export async function getDirections(origin, destination, waypoints) {
-  return directionClient.getDirections({
-    profile: 'driving',
-    waypoints: [
-      { coordinates: origin },
-      ...waypoints.map(wp => ({ coordinates: wp })),
-      { coordinates: destination }
-    ],
-    geometries: 'geojson'
-  })
-  .send()
-  .then(response => {
-    return response.body;
-  })
-  .catch(error => {
-    console.error('Error fetching directions:', error);
-    return { error: 'Failed to fetch directions' };
-  });
-}
+//   return directionClient.getDirections({
+//     profile: 'driving',
+//     waypoints: [
+//       { coordinates: origin },
+//       ...waypoints.map(wp => ({ coordinates: wp })),
+//       { coordinates: destination }
+//     ],
+//     geometries: 'geojson'
+//   })
+//   .send()
+//   .then(response => {
+//     return response.body;
+//   })
+//   .catch(error => {
+//     console.error('Error fetching directions:', error);
+//     return { error: 'Failed to fetch directions' };
+//   });
+// }
 
-  // const requestOptions = {
-  //   origin: origin,
-  //   destination: destination,
-  //   waypoints: waypoints.map(waypoint => {
-  //     // Check if the waypoint is lat/lng-based
-  //     if (waypoint.lat !== undefined && waypoint.lng !== undefined) {
-  //       return {
-  //         location: { lat: waypoint.lat, lng: waypoint.lng },
-  //         instruction: waypoint.instruction,
-  //         stopover: true
-  //       };
-  //     }
+  const requestOptions = {
+    origin: origin,
+    destination: destination,
+    waypoints: waypoints.map(waypoint => {
+      // Check if the waypoint is lat/lng-based
+      if (waypoint.lat !== undefined && waypoint.lng !== undefined) {
+        return {
+          location: { lat: waypoint.lat, lng: waypoint.lng },
+          instruction: waypoint.instruction,
+          stopover: true
+        };
+      }
   
-  //     // Check if the waypoint is address-based
-  //     if (waypoint.address !== undefined) {
-  //       return {
-  //         location: waypoint.address,
-  //         instruction: waypoint.instruction,
-  //         stopover: true
-  //       };
-  //     }
+      // Check if the waypoint is address-based
+      if (waypoint.address !== undefined) {
+        return {
+          location: waypoint.address,
+          instruction: waypoint.instruction,
+          stopover: true
+        };
+      }
   
-  //     // Check if the waypoint is place-based
-  //     if (waypoint.place !== undefined) {
-  //       return {
-  //         location: waypoint.place,
-  //         instruction: waypoint.instruction,
-  //         stopover: true
-  //       };
-  //     }
+      // Check if the waypoint is place-based
+      if (waypoint.place !== undefined) {
+        return {
+          location: waypoint.place,
+          instruction: waypoint.instruction,
+          stopover: true
+        };
+      }
   
-  //     // Handle unexpected formats (optional)
-  //     return;
-  //   })
-  // };
+      // Handle unexpected formats (optional)
+      return;
+    })
+  };
   
 
   // try {

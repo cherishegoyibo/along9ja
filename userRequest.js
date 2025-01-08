@@ -1,6 +1,6 @@
 import { getDirections } from './mapDirectionRequest.js';
 import { getStreetName } from './getUserAddress.js';
-// import { getRoute } from './getRoute.js';
+import { getRoute } from './queryRoute.js';
 
 // sample data start
 // const waypoints = [
@@ -11,9 +11,9 @@ import { getStreetName } from './getUserAddress.js';
 // sample end
 
 // Helper function to get user location coordinates
-function getUserCoordinates(userLocation) {
-    const lat = userLocation.coords.latitude || userLocation.latitude;
-    const lon = userLocation.coords.longitude || userLocation.longitude;
+function getUserCoordinates(coordReq) {
+    const lat = coordReq.latitude || coordReq.coords.latitude;
+    const lon = coordReq.longitude || coordReq.coords.longitude;
     return [lat, lon];
 }
 
@@ -26,7 +26,8 @@ async function getWaypoints(userLocationStreet, destination) {
     try {
         // This is a mock of getting waypoints based on user location and destination
         const route = await getRoute(userLocationStreet, destination);
-        return route.waypoints;
+        // return route.waypoints;
+        return route;
     } catch (error) {
         throw new Error('Error getting waypoints: ' + error.message);
     }
@@ -35,17 +36,17 @@ async function getWaypoints(userLocationStreet, destination) {
 // Main userRequest function
 export default async function userRequest(userLocation, destination) {
     try {
-        const userLocation = getUserCoordinates(userLocation);
-        const destination = getUserCoordinates(destination);
-        const userLocationStreet = getStreetName(userLocation[0], userLocation[1]);
+        const userLocationCoord = getUserCoordinates(userLocation);
+        const destinationCoord = getUserCoordinates(destination);
+        const userLocationStreet = getStreetName(userLocationCoord[0], userLocationCoord[1]);
 
         // Get the waypoints from the route
-        const waypoints = await getWaypoints(userLocationStreet, destination);
+        const waypoints = await getWaypoints(userLocationStreet, destinationCoord);
 
         const getWaypointsCoords = getCoordinatesFromWaypoints(waypoints);
 
         // Fetch the directions from Google Maps (or other map service)
-        const mapout = await getDirections(userLocation, destination, getWaypointsCoords);
+        const mapout = await getDirections(userLocationCoord, destinationCoord, getWaypointsCoords);
         
         // Return the directions and waypoints
         if (mapout) {
