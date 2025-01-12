@@ -2,14 +2,13 @@ import dotenv from 'dotenv';
 dotenv.config();
 import {Client} from "@googlemaps/google-maps-services-js";
 const googleMapsClient = new Client({
-  key: process.env.API_KEY,
+  key: process.env.GOOGLE_API_KEY,
   Promise: Promise // Use native promises
 });
 
 export async function getDirections(origin, destination, waypoints) {
   const requestOptions = {
     origin: origin,
-    destination: destination,
     waypoints: waypoints.map(waypoint => {
       // Check if the waypoint is lat/lng-based
       if (waypoint.lat !== undefined && waypoint.lng !== undefined) {
@@ -40,7 +39,9 @@ export async function getDirections(origin, destination, waypoints) {
   
       // Handle unexpected formats (optional)
       return;
-    })
+    }),
+    destination: destination
+
   };
   
 

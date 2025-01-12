@@ -1,5 +1,5 @@
 import { getDirections } from './mapDirectionRequest.js';
-import { getStreetName } from './getUserAddress.js';
+import { getLocality } from './getUserAddress.js';
 // import { getRoute } from './getRoute.js';
 
 // sample data start
@@ -26,14 +26,13 @@ async function getWaypoints(userLocationStreet, destination) {
     } catch (error) {
         throw new Error('Error getting waypoints: ' + error.message);
     }
-    return waypoints;
 }
 
 // Main userRequest function
 export default async function userRequest(userLocation, destination) {
     try {
         const { lat, lon } = getUserCoordinates(userLocation);
-        const userLocationStreet = await getStreetName(lat, lon);
+        const userLocationStreet = await getLocality(lat, lon);
 
         // Get the waypoints from the route
         const waypoints = await getWaypoints(userLocationStreet, destination);
