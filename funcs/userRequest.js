@@ -1,4 +1,3 @@
-import { getDirections } from './mapDirectionRequest.js';
 import { getLocality } from './getUserAddress.js';
 // import { getRoute } from './getRoute.js';
 
@@ -36,15 +35,12 @@ export default async function userRequest(userLocation, destination) {
 
         // Get the waypoints from the route
         const waypoints = await getWaypoints(userLocationStreet, destination);
-
-        // Fetch the directions from Google Maps (or other map service)
-        const mapout = await getDirections(userLocation, destination, waypoints);
         
         // Return the directions and waypoints
-        if (mapout) {
-            return { mapout, waypoints };
+        if (waypoints) {
+            return {waypoints, destination};
         } else {
-            throw new Error('No directions found');
+            return ('No directions found');
         }
     } catch (error) {
         console.error('Error in userRequest:', error);
