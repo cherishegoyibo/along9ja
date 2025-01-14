@@ -7,10 +7,6 @@ const secret = 'along9ja';
 
 
 
-
-
-
-
 export  async function createUser(req, res) {
     try {
       const { name, email, password } = req.body;
@@ -28,20 +24,27 @@ export  async function createUser(req, res) {
       const { email, password } = req.body;
       const user = await User.findOne({ email });
       if (!user) {
+          console.log('cant find user')
           return res.status(404).json({ message: 'User not found' });
       }
 
       const isMatch = await user.matchPassword(password);
       if (!isMatch) {
+          console.log('invalid credential')
           return res.status(400).json({ message: 'Invalid credentials' });
       }
 
-      // const token = jwt.sign({ id: user._id }, secret, { expiresIn: '1h' });
-      // res.status(200).json({ token });
-  } catch (err) {
-      console.log(err);
-      res.status(500).json({ message: 'Server error' });
-  }
+      req.login(user, (err) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ message: 'Server error' });
+        }
+        return res.status(200).json({ message: 'Login successful', user });
+    });
+} catch (err) {
+    console.log(err);
+    res.status(500).json({ message: 'Server error' });
+}v 
   }
 
 //   export const verifyToken = (req, res, next) => {
@@ -58,3 +61,9 @@ export  async function createUser(req, res) {
 //         res.status(400).json({ message: 'Invalid token.' });
 //     }
 // };
+export function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next(); // If authenticated, allow access to the next route
+  }
+  res.redirect('/login'); // If not authenticated, redirect to login page
+}

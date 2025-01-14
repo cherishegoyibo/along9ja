@@ -1,7 +1,7 @@
 import express from 'express';
 import passport from 'passport';
 
-import { createUser, loginUser } from '../funtion_along/along.js';
+import { createUser, loginUser,ensureAuthenticated } from '../funtion_along/along.js';
 
 
 const router = express.Router();
@@ -25,7 +25,7 @@ router.get(
   //   res.status(200).json({ message: 'This is a protected route', user: req.user });
   // });
 
-router.get("/Homepage", (req, res) => {
+router.get("/Homepage", ensureAuthenticated, (req, res) => {
     res.json({ message: "motherfucker" });
   });
 
