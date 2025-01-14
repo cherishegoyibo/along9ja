@@ -44,7 +44,7 @@ export  async function createUser(req, res) {
 } catch (err) {
     console.log(err);
     res.status(500).json({ message: 'Server error' });
-}v 
+}
   }
 
 //   export const verifyToken = (req, res, next) => {
