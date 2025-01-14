@@ -1,0 +1,23 @@
+{
+  "name": "along9ja",
+  "version": "1.0.0",
+  "description": "",
+  "main": "enhance.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cherishegoyibo/along9ja.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cherishegoyibo/along9ja/issues"
+  },
+  "homepage": "https://github.com/cherishegoyibo/along9ja#readme",
+  "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.4.0"
+  }
+}
