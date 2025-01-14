@@ -8,11 +8,13 @@ const router = Router();
 router.use(express.json());
 router.use(express.urlencoded({ extended: true}));
 
+// All the routes in this file will be prefixed with /direction
 router.route('/')
     .get((req, res) => {
         res.send(`GET request to the direction page`);
     })
     .post(async (req, res) => {
+        // need protection for this route, signin required
         const { userLocation, destination } = req.body;
         try {
             const directionsDetail = await userRequest(userLocation, destination);
@@ -32,6 +34,7 @@ router.route('/')
 //     });
 
 router.route('/update')
+    // sign in required
     .post((req, res) => {
         const mapout = getDirections(req.body.from, req.body.to);
         res.send(mapout);

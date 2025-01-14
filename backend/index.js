@@ -1,6 +1,13 @@
 import express from 'express';
 import directionRoutes from '../Routes/direction.js';
 import adminRoutes from '../Routes/admin.js';
+import session from 'express-session';
+import connectDB from './config/mongo.js';
+import routes from './routes/gen1.js'
+import passport from 'passport';
+import "./funtion_along/passport.js";
+
+connectDB();
 
 const app = express();
 

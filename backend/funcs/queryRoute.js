@@ -1,3 +1,4 @@
+//query database for route
 export async function getRoute(origin, destination) {
   try {
     const query = { origin, destination };
