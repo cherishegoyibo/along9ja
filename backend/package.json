@@ -19,7 +19,6 @@
   "homepage": "https://github.com/cherishegoyibo/along9ja#readme",
   "dependencies": {
     "@googlemaps/google-maps-services-js": "^3.4.0",
-    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
@@ -34,6 +33,5 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
-
   }
 }

@@ -1,4 +1,4 @@
-import { User, Route } from '../backend/db_model/database.js'
+import { User, Route } from '../db_model/database.js';
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { Strategy as LocalStrategy } from 'passport-local';

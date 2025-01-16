@@ -65,5 +65,5 @@ export function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next(); // If authenticated, allow access to the next route
   }
-  res.redirect('/login'); // If not authenticated, redirect to login page
+  res.redirect('/login'); 
 }

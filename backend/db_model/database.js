@@ -26,6 +26,30 @@ user.pre("save", async function (next) {
 
 const User = mongoose.model('User', user);
 
+const admin = new mongoose.Schema({
+  name: { type: String, required: true, trim: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true, minlength: 7, maxlength: 15 },
+  role: { type: String, enum: ['admin'], default: 'admin'},
+  createdAt: { type: Date, default: Date.now },
+});
+
+admin.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+  if (this.password) {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+  }
+  next();
+});
+
+admin.methods.matchPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
+const Admin= mongoose.model('Admin', admin);
+
+
 const Waypoint = new mongoose.Schema({
     address: { type: String, required: true },
     latitude: { type: Number, required: true },
