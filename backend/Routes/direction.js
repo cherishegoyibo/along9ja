@@ -2,22 +2,25 @@
 import userRequest from '../funcs/userRequest.js'
 import { getDirections } from '../funcs/mapDirectionRequest.js';
 import express from 'express';
-import { createUser, loginUser,ensureAuthenticated } from '../funtion_along/along.js';
+import { createUser, createAdmin,ensureAuthenticated , loginadmin, loginuser,isAdmin,isUser} from '../funtion_along/along.js';
 import passport from 'passport';
 
 
 const router = express.Router();
-router.use(express.json());
-router.use(express.urlencoded({ extended: true}));
 
 
-router.get("/loginUser", loginUser)
+router.get("/loginuser", loginuser);
 
-router.get("/Homepage", ensureAuthenticated, (req, res) => {
+router.get("/loginadmin", loginadmin);
+
+
+router.get("/Homepage",isUser, ensureAuthenticated, (req, res) => {
     res.json({ message: "motherfucker" });
   });
 
-
+router.get('/admin', isAdmin,(res,req) => {
+    res.json({message: 'welcome'});
+})
 
 // All the routes in this file will be prefixed with /direction
 router.route('/Homepage/directions', )
@@ -52,6 +55,8 @@ router.route('/update')
     });
 
 router.post('/createUser', createUser);
+
+router.post('/createAdmin', createAdmin);
     
     
 router.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));

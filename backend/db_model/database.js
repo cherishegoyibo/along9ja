@@ -68,4 +68,4 @@ const Waypoint = new mongoose.Schema({
 const Route = mongoose.model('Route', route);
 
 
-export { User, Route };
+export { User, Route, Admin };
