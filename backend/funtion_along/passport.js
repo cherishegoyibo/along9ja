@@ -1,5 +1,6 @@
 import { User, Route, Admin } from '../db_model/database.js';
 import passport from 'passport';
+import bcrypt from 'bcrypt'
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { Strategy as LocalStrategy } from 'passport-local';
 
@@ -50,7 +51,7 @@ passport.use('user-local',
   )
 );
 
-passport.use('user-admin',
+passport.use('admin-local',
   new LocalStrategy(
     { 
       usernameField: 'email',  
