@@ -48,7 +48,7 @@ export  async function createUser(req, res) {
   
       req.logIn(user, (err) => {
         if (err) return next(err);
-        return res.status(200).json({message : yagi})
+        return res.status(200).json({ message: 'Login successful', redirect: '/Homepage' });
       });
     })(req, res, next);
   };
@@ -80,12 +80,12 @@ export  async function createUser(req, res) {
 //         res.status(400).json({ message: 'Invalid token.' });
 //     }
 // };
-export function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next(); // If authenticated, allow access to the next route
-  }
-  res.redirect('/login'); 
-}
+// export function ensureAuthenticated(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return next(); // If authenticated, allow access to the next route
+//   }
+//   res.redirect('/login'); 
+// }
 
 export function isAdmin(req, res, next) {
   if (req.isAuthenticated() && req.user.role === 'admin') {

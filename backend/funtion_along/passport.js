@@ -29,8 +29,7 @@ passport.use(
 passport.use('user-local',
   new LocalStrategy(
     { 
-      usernameField: 'email',  
-      passwordField: 'password', 
+      usernameField: 'email',   
     },
     async (email, password, done) => {
       try {
@@ -55,7 +54,6 @@ passport.use('admin-local',
   new LocalStrategy(
     { 
       usernameField: 'email',  
-      passwordField: 'password', 
     },
     async (email, password, done) => {
       try {

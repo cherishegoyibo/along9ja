@@ -2,7 +2,7 @@
 import userRequest from '../funcs/userRequest.js'
 import { getDirections } from '../funcs/mapDirectionRequest.js';
 import express from 'express';
-import { createUser, createAdmin,ensureAuthenticated , loginadmin, loginuser,isAdmin,isUser} from '../funtion_along/along.js';
+import { createUser, createAdmin, loginadmin, loginuser,isAdmin,isUser} from '../funtion_along/along.js';
 import passport from 'passport';
 
 
@@ -13,21 +13,24 @@ router.get("/loginuser", loginuser);
 
 router.get("/loginadmin", loginadmin);
 
-
-router.get("/Homepage",isUser, ensureAuthenticated, (req, res) => {
-    res.json({ message: "motherfucker" });
-  });
+router.get("/Homepage", isUser, (req, res) => {
+    if (req.user) {
+        res.json({ message: `Welcome to the homepage, ${req.user.name}` });
+    } else {
+        res.status(401).json({ message: 'Unauthorized' });
+    }
+});
 
 router.get('/admin', isAdmin,(res,req) => {
     res.json({message: 'welcome'});
 })
 
 // All the routes in this file will be prefixed with /direction
-router.route('/Homepage/directions', )
-    .get((req, res) => {
+router.route('/directions' )
+    .get(isUser, (req, res) => {
      res.send(`GET request to the direction page`);
     })
-    .post(async (req, res) => {
+    .post(isUser,async (req, res) => {
         // need protection for this route, signin required
         const { userLocation, destination } = req.body;
         try {
