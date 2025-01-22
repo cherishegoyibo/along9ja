@@ -1,0 +1,39 @@
+{
+  "name": "along9ja",
+  "version": "1.0.0",
+  "description": "An along app for all Nigerians",
+  "main": "index.js",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,html,css,scss,md}\"",
+    "preview": "vite preview",
+    "lint": "eslint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cherishegoyibo/along9ja.git"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "Mathias Owa Martins <owamathias@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cherishegoyibo/along9ja/issues"
+  },
+  "homepage": "https://github.com/cherishegoyibo/along9ja#readme",
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.3.4",
+    "eslint": "9.18.0",
+    "eslint-config-prettier": "10.0.1",
+    "eslint-plugin-react": "^7.37.1",
+    "globals": "15.14.0",
+    "prettier": "3.4.2",
+    "vite": "^5.4.2"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
