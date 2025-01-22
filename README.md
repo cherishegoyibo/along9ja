@@ -40,6 +40,7 @@ Ensure you have the following installed on your system:
 
 ```bash
 npm install
+```
 
 
 3. Create a .env file and add your environment variables:
@@ -49,7 +50,8 @@ JWT_SECRET=your-secret-key
 GOOGLE_MAPS_API_KEY=your-google-maps-api-key
 
 4. Start the server:
+
 ```bash
 npm start
-
+```
 ### Frontend Setup
