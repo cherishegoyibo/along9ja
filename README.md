@@ -42,16 +42,17 @@ Ensure you have the following installed on your system:
 npm install
 ```
 
+3. Create a `.env` file and add your environment variables:
 
-3. Create a .env file and add your environment variables:
-PORT=5000
-MONGO_URI=your-mongodb-connection-string
-JWT_SECRET=your-secret-key
-GOOGLE_MAPS_API_KEY=your-google-maps-api-key
+- PORT=5000
+- MONGO_URI=your-mongodb-connection-string
+- JWT_SECRET=your-secret-key
+- GOOGLE_MAPS_API_KEY=your-google-maps-api-key
 
 4. Start the server:
 
 ```bash
 npm start
 ```
+
 ### Frontend Setup
