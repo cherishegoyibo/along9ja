@@ -42,12 +42,13 @@ Ensure you have the following installed on your system:
 npm install
 ```
 
-3. Create a `.env` file and add your environment variables:
+3. Create a `.env` file and add environment variables:
 
-- PORT=5000
-- MONGO_URI=your-mongodb-connection-string
-- JWT_SECRET=your-secret-key
-- GOOGLE_MAPS_API_KEY=your-google-maps-api-key
+```plaintext
+PORT=5500                        # The port your backend server will run on
+MONGO_URI=your-mongodb-connection-string # MongoDB connection string
+JWT_SECRET=your-secret-key       # A secret key for signing and verifying JSON Web Tokens (JWTs)
+GOOGLE_MAPS_API_KEY=your-google-maps-api-key # API key for Google Maps integration
 
 4. Start the server:
 
