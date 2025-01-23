@@ -74,6 +74,8 @@ body {
   width: auto;
   padding: 0;
   margin: 0;
+  height: 100vh;
+  width: 100%;
 }
 
 body,
@@ -94,8 +96,6 @@ h4,
 h5,
 h6,
 p {
-  font-family: var(--font-family-title);
-  font-weight: var(--font-weight-bold);
   margin: 0;
 }
 
@@ -215,24 +215,113 @@ a {
 }
 
 .map-container {
-  width: 100%;
-  height: 89vh;
+  height: 500px;
+  width: 50%;
+  border: 2px solid black;
+  border-radius: 20px;
 }
 
-/*
-section,
-.signin {
-  width: 100%;
-  max-width: 420px;
-  min-height: 400px;
+/* TEAM AREA */
+
+.global-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 20px;
+  align-content: center;
+  justify-content: center;
+  margin: auto 133px;
+}
+.team-container {
+  display: grid;
+  justify-content: center;
+  width: 350px;
+  height: 400px;
+  padding-bottom: 40px;
+}
+
+.section-title-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.4);
+  align-items: center;
+  margin: 30px 450px;
+  text-align: center;
 }
 
-form {
+.team-item {
+  background: #f4f5f6;
+  text-align: center;
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.team-item:hover {
+  transform: translateY(-4px);
+  border: 1px solid var(--color-primary);
+}
+
+.team-img {
+  max-width: 100px;
+  height: auto;
+  margin: 0 auto 20px auto;
+  border-radius: 50%;
+  border: 4px solid #dedede;
+}
+
+ul.team-icon {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 0;
+}
+
+ul.team-icon li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+
+ul.team-icon li a:hover {
+  background: var(--color-primary);
+  color: #000000;
+}
+
+/* SIGN UP AREA */
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem 0.5rem;
+}
+
+.signup-section {
+  display: flexbox;
+  align-items: center;
+  position: relative;
+  left: 600px;
+  top: 100px;
+  max-width: 420px;
+  min-height: 600px;
+
+  padding: 1rem;
+  background-color: rgba(190, 190, 190, 0.4);
+  border: 1px solid #dadada;
+  border-radius: 30px;
+}
+
+.signup-form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -242,21 +331,27 @@ form {
 
 input[type="text"],
 input[type="password"],
-button,
 textarea {
-  font-family: "Nunito", sans-serif;
+  font-family: inherit;
   font-size: 22px;
   padding: 0.25rem;
   border-radius: 0.5rem;
 }
 
 label,
-button {
+.signup-button {
   margin-top: 1rem;
 }
 
-button {
+.signup-button {
   padding: 0.5rem;
+  pointer-events: stroke;
+  cursor: pointer;
+}
+
+.signup-button:hover {
+  background-color: #000;
+  color: #fff;
 }
 
 .instructions {
@@ -267,6 +362,12 @@ button {
   padding: 0.25rem;
   position: relative;
   bottom: -10px;
+}
+
+.signup-p {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  text-align: center;
 }
 
 .instructions > svg {
@@ -301,9 +402,18 @@ button {
 }
 
 .line {
+  text-align: center;
   display: inline-block;
+  width: 100%;
+  height: 1px;
+  background-color: #dadada;
 }
-*/
+
+.line:hover {
+  text-decoration: underline;
+}
+
+/* END OF SIGN UP AREA */
 
 #map {
   height: 100%;

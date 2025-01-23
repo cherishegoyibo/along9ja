@@ -3,7 +3,7 @@ export default function Navbar() {
     <header>
       <div className="primary-header">
         <div className="header-logo">
-          <a href="#">
+          <a href="/">
             <img
               src="./images/along9ja.png"
               alt="Along9ja logo"
@@ -48,7 +48,7 @@ export default function Navbar() {
               </a>
             </li>
             <button className="nav-item" type="button">
-              <a href="/sign-in" className="nav-link">
+              <a href="/sign-up" className="nav-link">
                 Sign Up
                 <i className="fa-solid arrow fa-arrow-right-to-bracket"></i>
               </a>
