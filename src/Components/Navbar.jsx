@@ -38,11 +38,6 @@ export default function Navbar() {
               </a>
             </li>
             <li className="nav-item">
-              <a href="/saved-places" className="nav-link">
-                Saved Places
-              </a>
-            </li>
-            <li className="nav-item">
               <a href="/about-us" className="nav-link">
                 About Us
               </a>
