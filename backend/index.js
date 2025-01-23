@@ -23,7 +23,7 @@ app.use(passport.session());
 app.use('/', routes);
 // Use route files
 
-// app.use('/admin', adminRoutes);
+ app.use('/admin', adminRoutes);
 
 // Default route
 // app.get('/', (req, res) => {
