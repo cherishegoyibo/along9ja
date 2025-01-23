@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
+  plugins: [react()],
   server: {
     proxy: {
       "/api": {
@@ -9,10 +10,12 @@ export default defineConfig({
         changeOrigin: true,
       },
       "/backend": {
-        target: "http://localhost:3000",
+        target: "http://localhost:5000",
         changeOrigin: true,
       },
     },
   },
-  plugins: [react()],
+  build: {
+    sourcemap: true,
+  },
 });
