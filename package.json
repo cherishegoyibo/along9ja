@@ -25,13 +25,17 @@
   },
   "homepage": "https://github.com/cherishegoyibo/along9ja#readme",
   "devDependencies": {
-    "@vitejs/plugin-react": "4.3.4",
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.0",
+    "@vitejs/plugin-react": "^4.3.4",
     "eslint": "9.18.0",
     "eslint-config-prettier": "10.0.1",
     "eslint-plugin-react": "^7.37.1",
     "globals": "15.14.0",
     "prettier": "3.4.2",
-    "vite": "^5.4.2"
+    "vite": "^5.4.2",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
   },
   "dependencies": {
     "@chakra-ui/provider": "^2.4.2",
@@ -42,11 +46,14 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@googlemaps/js-api-loader": "^1.16.8",
+    "@googlemaps/react-wrapper": "^1.1.42",
     "@react-google-maps/api": "^2.20.5",
     "@vis.gl/react-google-maps": "^1.5.0",
+    "axios": "^1.7.9",
     "framer-motion": "^12.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.3"
   }
 }
