@@ -62,13 +62,13 @@ npm start
 1. Navigate to the frontend directory:
 
 ```bash
-cd along9ja/frontend
+cd along9ja/src
 ```
 
 2. Install dependencies:
 
 ```bash
-npm install
+npx serve
 ```
 
 3. Start the development server:
