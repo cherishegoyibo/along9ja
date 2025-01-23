@@ -1,0 +1,477 @@
+:root,
+:host {
+  /* COLOR AREA */
+  --color-primary: #ffc700;
+  --color-secondary: #a0a0a0;
+  --color-black: #090909;
+  --color-white: #ffffff;
+  --color-light-grey: #f3f3f3;
+  --color-dark-grey: #353535;
+  --text-color: var(--color-black);
+
+  /* FONT AREA */
+
+  --font-family-base: "Open Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-family-title: "Raleway", Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-size-small: 1.2rem;
+  --font-size-medium: 1.6rem;
+  --font-size-large: 1.8rem;
+  --font-size-x-large: 2.3rem;
+  --font-size-xx-large: 4.8rem;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  /* NAV AREA */
+  --nav-item-font-family: var(--font-family-title);
+  --nav-item-font-weight: var(--font-weight-bold);
+  --nav-item-font-size: var(--font-size-small);
+  --nav-item-letter-spacing: 0.04rem;
+  --nav-item-display: inline-block;
+  --nav-item-margin: 0 0 1.5rem 0;
+  --nav-item-link-hover: var(--color-secondary);
+
+  /* LINE AREA */
+  --line-height-small: 1.2;
+  --line-height-base: 1.5;
+  --line-height-big: 1.8;
+
+  --section-header-align: center;
+
+  /* BUTTON AREA */
+  --button-display: inline-block;
+  --button-padding: 0.5rem 2rem;
+  --button-border: 0.1rem solid var(--color-primary);
+  --button-radius: 30px;
+  --button-color: var(--color-black);
+  --button-text-decoration: none;
+  --button-font-size: var(--font-size-medium);
+  --button-hover-color: var(--color-white);
+  --button-hover-text-decoration: none;
+  --button-hover-background: var(--color-primary);
+
+  /* HEADER AREA */
+  --header-padding: 1rem 0 0;
+  --header-logo-position: relative;
+  --header-logo-link-display: inline-block;
+  --header-logo-link-position: absolute;
+  --header-logo-link-top: 1rem;
+  --header-logo-link-left: 0.1rem;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  width: auto;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+body,
+a {
+  color: var(--text-color);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-white);
+  padding: 0 1.5rem;
+  border: 0.1px solid rgb(210, 210, 210);
+}
+
+button {
+  display: var(--button-display);
+  border-radius: var(--button-radius);
+  padding: var(--button-padding);
+  border: var(--button-border);
+  font-size: var(--button-font-size);
+
+  background-color: var(--color-primary);
+  text-decoration: var(--button-text-decoration);
+}
+
+button:hover {
+  color: var(--color-white);
+  text-decoration: var(--button-hover-text-decoration);
+  background-color: var(--color-light-grey);
+  transition: 0.15s ease-in-out;
+}
+
+.primary-header {
+  margin: var(--nav-item-margin);
+  padding: var(--header-padding);
+  display: flex;
+  width: 100%;
+  align-items: center;
+  list-style: none;
+}
+
+.header-logo,
+img {
+  flex: 1 1 auto;
+  position: var(--header-logo-position);
+}
+
+.nav-bar {
+  width: 100%;
+  display: flex;
+}
+
+.nav-bar,
+li,
+a {
+  position: relative;
+  justify-content: space-between;
+  display: inline-block;
+  margin: 0 0.5rem;
+  list-style: none;
+  text-align: center;
+  transition: 0.15s ease-in-out;
+  text-transform: capitalize;
+}
+
+.nav-item {
+  font-family: var(--nav-item-font-family);
+  font-weight: var(--nav-item-font-weight);
+  font-size: var(--nav-item-font-size);
+}
+
+.nav-bar li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: 0.25s ease-in-out;
+}
+
+.nav-bar li a:hover:after {
+  width: 100%;
+}
+
+.nav-bar li a:hover {
+  color: var(--color-secondary);
+}
+
+.nav-bar li a:active {
+  color: var(--color-dark-grey);
+}
+
+.nav-link i {
+  margin-left: 0.5rem;
+}
+
+.open-menu,
+.close-menu {
+  position: absolute;
+  color: var(--color-dark-grey);
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: none;
+}
+.open-menu {
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+.close-menu {
+  top: 20px;
+  right: 20px;
+}
+
+#map {
+  width: 100%;
+  max-height: 100vh;
+}
+
+.map-container {
+  height: 500px;
+  width: 50%;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+/* TEAM AREA */
+
+.global-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 20px;
+  align-content: center;
+  justify-content: center;
+  margin: auto 133px;
+}
+.team-container {
+  display: grid;
+  justify-content: center;
+  width: 350px;
+  height: 400px;
+  padding-bottom: 40px;
+}
+
+.section-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 450px;
+  text-align: center;
+}
+
+.team-item {
+  background: #f4f5f6;
+  text-align: center;
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.team-item:hover {
+  transform: translateY(-4px);
+  border: 1px solid var(--color-primary);
+}
+
+.team-img {
+  max-width: 100px;
+  height: auto;
+  margin: 0 auto 20px auto;
+  border-radius: 50%;
+  border: 4px solid #dedede;
+}
+
+ul.team-icon {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 0;
+}
+
+ul.team-icon li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+
+ul.team-icon li a:hover {
+  background: var(--color-primary);
+  color: #000000;
+}
+
+/* SIGN UP AREA */
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem 0.5rem;
+}
+
+.signup-section {
+  display: flexbox;
+  align-items: center;
+  position: relative;
+  left: 600px;
+  top: 100px;
+  max-width: 420px;
+  min-height: 600px;
+
+  padding: 1rem;
+  background-color: rgba(190, 190, 190, 0.4);
+  border: 1px solid #dadada;
+  border-radius: 30px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  font-family: inherit;
+  font-size: 22px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+
+label,
+.signup-button {
+  margin-top: 1rem;
+}
+
+.signup-button {
+  padding: 0.5rem;
+  pointer-events: stroke;
+  cursor: pointer;
+}
+
+.signup-button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
+.signup-p {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.line {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background-color: #dadada;
+}
+
+.line:hover {
+  text-decoration: underline;
+}
+
+/* END OF SIGN UP AREA */
+
+#map {
+  height: 100%;
+}
+
+#check {
+  display: none;
+}
+
+#check:checked ~ .nav-bar {
+  display: flex;
+}
+
+#check:checked ~ .open-menu {
+  display: none;
+}
+
+#check:checked ~ .close-menu {
+  display: block;
+}
+
+@media (max-width: 610px) {
+  .nav-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 60%;
+    border-radius: 20px 0 0 0;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -1%;
+    z-index: 100;
+    background-color: var(--color-light-grey);
+    transition: all 0.2s ease-in-out;
+  }
+  .nav-bar li {
+    margin-top: 40px;
+  }
+  .nav-bar li a {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+  button {
+    margin-top: 40px;
+  }
+  .open-menu,
+  .close-menu {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  #check:checked ~ .nav-bar {
+    right: 0;
+  }
+}
