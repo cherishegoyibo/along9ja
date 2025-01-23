@@ -20,7 +20,7 @@ app.use(passport.session());
 
 
 
-app.use('/along9ja', routes);
+app.use('/', routes);
 // Use route files
 
 // app.use('/admin', adminRoutes);

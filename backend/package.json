@@ -2,10 +2,15 @@
   "name": "along9ja",
   "version": "1.0.0",
   "description": "",
-  "main": "enhance.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "repository": {
     "type": "git",
@@ -19,6 +24,7 @@
   "homepage": "https://github.com/cherishegoyibo/along9ja#readme",
   "dependencies": {
     "@googlemaps/google-maps-services-js": "^3.4.0",
+    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",

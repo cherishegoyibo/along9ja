@@ -13,11 +13,11 @@ router.get("/loginuser", loginuser);
 
 router.get("/loginadmin", loginadmin);
 
-router.get("/Homepage", isUser, (req, res) => {
-    if (req.user) {
-        res.json({ message: `Welcome to the homepage, ${req.user.name}` });
-    } else {
-        res.status(401).json({ message: 'Unauthorized' });
+router.get("/", (req, res) => {
+    try {
+        res.json({ message: 'Welcome to along9ja' });
+    } catch (err) {
+        res.status(401).json({ message: 'You are not authorized to view this page' });
     }
 });
 
@@ -28,11 +28,19 @@ router.get('/admin', isAdmin,(res,req) => {
 // All the routes in this file will be prefixed with /direction
 router.route('/directions' )
     .get(isUser, (req, res) => {
-     res.send(`GET request to the direction page`);
-    })
+    try {
+        res.send(`GET request to the direction page`);
+    } catch (err) {
+        res.status(401).json({ message: 'You are not authorized to view this page' });
+    }})
+
     .post(isUser,async (req, res) => {
         // need protection for this route, signin required
         const { userLocation, destination } = req.body;
+        if (!userLocation || !destination) {
+            res.status(400).send('Please provide a user location and destination');
+        }
+
         try {
             const directionsDetail = await userRequest(userLocation, destination);
             res.send(directionsDetail);
