@@ -1,10 +1,11 @@
 import React from "react";
-import Navbar from "../Components/Navbar";
+import SharedMapContent from "../Components/SharedMapContent";
 
-export default function NearbyBuses() {
+export default function Home() {
   return (
-    <>
-      <h1>Nearby Buses</h1>
-    </>
+    <div style={{ textAlign: "center", color: "#ffc700", marginTop: "10px" }}>
+      <h1>Nearby Buses!</h1>
+      <SharedMapContent />
+    </div>
   );
 }

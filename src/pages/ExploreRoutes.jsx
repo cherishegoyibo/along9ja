@@ -1,10 +1,11 @@
 import React from "react";
-import Navbar from "../Components/Navbar";
+import SharedMapContent from "../Components/SharedMapContent";
 
-export default function ExploreRoutes() {
+export default function Home() {
   return (
-    <>
-      <h2>Explore Routes</h2>
-    </>
+    <div style={{ textAlign: "center", color: "#ffc700", marginTop: "10px" }}>
+      <h1>Explore Routes!</h1>
+      <SharedMapContent />
+    </div>
   );
 }

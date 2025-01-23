@@ -1,5 +1,11 @@
 import React from "react";
+import SharedMapContent from "../Components/SharedMapContent";
 
 export default function Home() {
-  return <></>;
+  return (
+    <div style={{ textAlign: "center", color: "#ffc700", marginTop: "10px" }}>
+      <h1>Welcome to Along9ja!</h1>
+      <SharedMapContent />
+    </div>
+  );
 }
