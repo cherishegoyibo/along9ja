@@ -42,7 +42,7 @@ export default function Navbar() {
                 About Us
               </a>
             </li>
-            <button className="nav-item" type="button">
+            <button className="nav-item nav-hover" type="button">
               <a href="/sign-up" className="nav-link">
                 Sign Up
                 <i className="fa-solid arrow fa-arrow-right-to-bracket"></i>

@@ -18,7 +18,7 @@
   },
   "keywords": [],
   "type": "module",
-  "author": "Mathias Owa Martins <owamathias@gmail.com>",
+  "author": "Mathias Owa Martins <owamathias@gmail.com> https://github.com/montybasquiart",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cherishegoyibo/along9ja/issues"
@@ -51,6 +51,7 @@
     "@vis.gl/react-google-maps": "^1.5.0",
     "axios": "^1.7.9",
     "framer-motion": "^12.0.1",
+    "leaflet": "^1.9.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
