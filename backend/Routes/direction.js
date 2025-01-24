@@ -9,9 +9,16 @@ import passport from 'passport';
 const router = express.Router();
 
 
-router.get("/loginuser", loginuser);
+router.route("/loginuser").get((req, res)=>{
+    try{
+        res.json({message:"log in ur username nd password"})
+    } catch(err) {
+        res.status(401).json({message: "pls input the right credential"})
+    }
+}).post(loginuser);
+    
 
-router.get("/loginadmin", loginadmin);
+router.post("/loginadmin", loginadmin);
 
 router.get("/", (req, res) => {
     try {
