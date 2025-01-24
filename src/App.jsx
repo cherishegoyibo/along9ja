@@ -6,12 +6,14 @@ import AboutUs from "./pages/AboutUs";
 import SignUp from "./pages/SignUp";
 import ExploreRoutes from "./pages/ExploreRoutes";
 import NearbyBuses from "./pages/NearbyBuses";
+import Login from "./pages/Login";
 
 export default function App() {
   return (
     <>
       <Navbar />
       <Routes>
+        <Route path="/" element={<Login />} />
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/sign-up" element={<SignUp />} />

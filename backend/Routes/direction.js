@@ -43,7 +43,7 @@ router.route('/directions' )
 
     .post(isUser,async (req, res) => {
         // need protection for this route, signin required
-        const { userLocation, destination } = req.body;
+        const { userLocation, destination } = req.body; 
         if (!userLocation || !destination) {
             res.status(400).send('Please provide a user location and destination');
         }
@@ -55,14 +55,14 @@ router.route('/directions' )
         catch(err) {
             res.status(500).send('Error, try again.');
         }
-    });
+    });--
 
 // router.route('/new')
 //     .get((req, res) => {
 //         res.send(`GET request to the new direction page`);
 //     })
 //     .post((req, res) => {
-//         const requestData = JSON.stringify(req.body);
+//         const requestData = JSON.stringify(req.body);-
 //     });
 
 router.route('/update')

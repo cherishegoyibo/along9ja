@@ -52,7 +52,6 @@ const Admin= mongoose.model('Admin', admin);
 
 
 const Waypoint = new mongoose.Schema({
-    address: { type: String, required: true },
     latitude: { type: Number, required: true },
     longitude: { type: Number, required: true },
     instruction: { type: String, required: false }
