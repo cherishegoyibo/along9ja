@@ -21,7 +21,7 @@ async function getWaypoints(userLocationStreet, destination) {
     try {
         // This is a mock of getting waypoints based on user location and destination
         const route = await getRoute(userLocationStreet, destination);
-        return route.waypoints;
+        return route;
     } catch (error) {
         throw new Error('Error getting waypoints: ' + error.message);
     }

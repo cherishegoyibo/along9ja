@@ -68,7 +68,8 @@ router.route('/directions' )
 router.route('/update')
     // sign in required
     .post((req, res) => {
-        const mapout = getDirections(req.body.from, req.body.to);
+        const {from, to} = req.body;
+        const mapout = getDirections(from, to);
         res.send(mapout);
     });
 
