@@ -30,7 +30,7 @@ export default function SharedMapContent() {
         if (mapRef.current) {
           const googleMap = new window.google.maps.Map(mapRef.current, {
             center,
-            zoom: 16,
+            zoom: 17,
           });
           setMap(googleMap);
           setDirectionsService(new window.google.maps.DirectionsService());

@@ -1,3 +1,28 @@
+.parent-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+/*
+
+PARENT  CONTAINER TO THE SIDE
+
+.parent-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 1%;
+  top: 20%;
+  z-index: 1000;
+} */
+
 #floating-panel {
   background-color: white;
   padding: 20px;
@@ -8,6 +33,7 @@
     Helvetica,
     Arial,
     sans-serif;
+  font-size: 14px;
 }
 
 #floating-panel input,
@@ -20,11 +46,8 @@
   width: 100%;
 }
 
-#floating-panel,
-b {
+#floating-panel {
   color: black;
-  font-size: var(--button-font-size);
-  font-size: 14px;
 }
 
 .directions #floating-panel .directions-button {

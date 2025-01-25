@@ -44,21 +44,23 @@ export default function Directions({ map, directionsService }) {
 
   return (
     <>
-      <div id="floating-panel">
-        <div>
-          <input type="text" id="from" placeholder="Where you dey?" />
-        </div>
-        <div>
-          <input type="text" id="to" placeholder="Where you dey go?" />
-        </div>
-        <div className="directions">
-          <div id="floating-panel">
-            <button
-              className="directions-button"
-              onClick={calculateAndDisplayRoute}
-            >
-              Show Me Road <i className="fa-solid fa-route"></i>
-            </button>
+      <div className="parent-container">
+        <div id="floating-panel">
+          <div>
+            <input type="text" id="from" placeholder="Where you dey?" />
+          </div>
+          <div>
+            <input type="text" id="to" placeholder="Where you dey go?" />
+          </div>
+          <div className="directions">
+            <div id="floating-panel">
+              <button
+                className="directions-button"
+                onClick={calculateAndDisplayRoute}
+              >
+                Show Me Road <i className="fa-solid fa-route"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
