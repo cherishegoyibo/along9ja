@@ -121,7 +121,7 @@ button {
 button:hover {
   color: var(--color-white) !important;
   text-decoration: var(--button-hover-text-decoration);
-  background-color: var(--color-black);
+  background-color: var(--color-light-grey);
   transition: 0.15s ease-in-out;
 }
 
