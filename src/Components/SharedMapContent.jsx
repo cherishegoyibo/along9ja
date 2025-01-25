@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import Directions from "./Directions";
+import "../styles/directions.css";
 
 const mapContainerStyle = {
   width: "100%",
@@ -10,23 +12,28 @@ const center = {
   lng: 7.4578,
 };
 
-export default function Home() {
+export default function SharedMapContent() {
   const mapRef = useRef(null);
+  const [map, setMap] = useState(null);
+  const [directionsService, setDirectionsService] = useState(null);
 
   useEffect(() => {
     const loadGoogleMapsScript = () => {
       const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB-sVqTP5Rc_nVFpiF_pBAOOaysNVCUevc&callback=initMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB-sVqTP5Rc_nVFpiF_pBAOOaysNVCUevc
+&callback=initMap`;
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
 
       window.initMap = () => {
         if (mapRef.current) {
-          new window.google.maps.Map(mapRef.current, {
+          const googleMap = new window.google.maps.Map(mapRef.current, {
             center,
             zoom: 16,
           });
+          setMap(googleMap);
+          setDirectionsService(new window.google.maps.DirectionsService());
         }
       };
     };
@@ -41,5 +48,21 @@ export default function Home() {
     };
   }, []);
 
-  return <div ref={mapRef} style={mapContainerStyle}></div>;
+  return (
+    <div style={{ position: "relative", height: "100vh" }}>
+      <div ref={mapRef} style={mapContainerStyle}></div>
+      {map && directionsService && (
+        <div
+          style={{
+            position: "absolute",
+            top: "20px",
+            left: "20px",
+            zIndex: 1000,
+          }}
+        >
+          <Directions map={map} directionsService={directionsService} />
+        </div>
+      )}
+    </div>
+  );
 }
