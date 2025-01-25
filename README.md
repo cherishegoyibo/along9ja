@@ -26,7 +26,7 @@ Ensure you have the following installed on your system:
 
 - **Node.js** (v16.x or higher)
 - **MongoDB** (or access to a hosted MongoDB instance)
-- **React Native CLI** (for mobile development)
+- **React** (for Web development)
 
 ### Backend Setup
 
@@ -35,6 +35,8 @@ Ensure you have the following installed on your system:
    ```bash
    git clone https://github.com/cherishegoyibo/along9ja.git
    cd along9ja/backend
+
+   ```
 
 2. Install dependencies:
 
@@ -59,29 +61,47 @@ npm start
 
 ### Frontend Setup (Web)
 
-1. Navigate to the frontend directory:
+### Frontend Setup (Web)
+
+1. Navigate to the root directory:
 
 ```bash
-cd along9ja/src
+cd along9ja
 ```
 
-2. Install dependencies:
+2. Download and install [Node](http://nodejs.org/)
+
+3. Run the following command in the command line to install dependencies:
 
 ```bash
-npx serve
+npm install
 ```
 
-3. Start the development server:
+4. Install Vite (if not already included in your dependencies):
 
 ```bash
-npm start
+npm install vite
 ```
+
+5. Install Webpack (if not already included in your dependencies):
+
+```bash
+npm install webpack webpack-cli --save-dev
+```
+
+6. Now that you have everything installed, run
+
+```bash
+npm run dev
+```
+
+inside the root directory to start development server.
 
 ## Architecture
 
 The application follows a modern, modular architecture to ensure scalability and maintainability.
 
-- Frontend: React.js (web) and React Native (mobile) for intuitive user interfaces.
+- Frontend: React.js and JSX (web) for intuitive user interfaces.
 - Backend: Node.js with Express.js for API handling and business logic.
 - Database: MongoDB for storing route data, user contributions, and app metadata.
 - Third-Party APIs: Google Maps API for mapping and route visualization.
@@ -122,7 +142,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ## Contributors
 
-- [Mathias Owa Martins](https://github.com/montybasquiart)
-- [OSIGWE EZECHIMEREM EBENEZER](https://github.com/Ebnen)
-- [Cher](https://github.com/cherishegoyibo)
-- [Femi](https://github.com/megafemworld)
+- [Mathias Owa Martins](https://github.com/montybasquiart) - Frontend Engineer
+- [OSIGWE EZECHIMEREM EBENEZER](https://github.com/Ebnen) - Backend Engineer
+- [Cher](https://github.com/cherishegoyibo) - Frontend Engineer
+- [Femi](https://github.com/megafemworld) - Backend Engineer
