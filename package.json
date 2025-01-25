@@ -2,7 +2,7 @@
   "name": "along9ja",
   "version": "1.0.0",
   "description": "An along app for all Nigerians",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "build": "vite build",
     "dev": "vite",
@@ -52,14 +52,11 @@
     "@vis.gl/react-google-maps": "^1.5.0",
     "axios": "^1.7.9",
     "framer-motion": "^12.0.1",
-<<<<<<< HEAD
     "leaflet": "^1.9.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-=======
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
->>>>>>> 8d75c6eb0291d185c65c704dc284c811abefca1b
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.3"
   }
