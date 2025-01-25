@@ -61,8 +61,6 @@ npm start
 
 ### Frontend Setup (Web)
 
-### Frontend Setup (Web)
-
 1. Navigate to the root directory:
 
 ```bash
