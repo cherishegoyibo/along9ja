@@ -4,6 +4,7 @@ import { getDirections } from '../funcs/mapDirectionRequest.js';
 import express from 'express';
 import { createUser, createAdmin, loginadmin, loginuser,isAdmin,isUser} from '../funtion_along/along.js';
 import passport from 'passport';
+import { addRoute } from '../funcs/adddRoutes.js';
 
 
 const router = express.Router();
@@ -29,8 +30,25 @@ router.get("/", (req, res) => {
 });
 
 router.get('/admin', isAdmin,(res,req) => {
-    res.json({message: 'welcome'});
+    res.json({message: 'welcome to Admin page'});
 })
+
+router.route('/admin/new/route')
+    .get(isAdmin, (req, res) => {
+        res.send(`GET request to the new route page`);
+    })
+    .post(isAdmin, (req, res) => {
+        const { origin, destination, waypoints } = req.body;
+        if (!origin || !destination || !waypoints) {
+            res.status(400).send('Please provide an origin, destination and waypoints');
+        }
+        try {
+            const route = addRoute(origin, destination, waypoints);
+            res.send(route);
+        } catch (err) {
+            res.status(500).send('Error, try again.');
+        }
+    });
 
 // All the routes in this file will be prefixed with /direction
 router.route('/directions' )
