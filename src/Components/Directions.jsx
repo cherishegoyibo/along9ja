@@ -15,12 +15,16 @@ export default function Directions({ map, directionsService }) {
   const calculateAndDisplayRoute = () => {
     const start = document.getElementById("from").value;
     const end = document.getElementById("to").value;
-    const mode = document.getElementById("mode").value;
 
     if (!start || !end) {
       alert("Abeg, try enter where you dey, and where you dey go!");
       return;
     }
+
+    {
+      /* Default travel mode set to DRIVING to avoid confusion */
+    }
+    const mode = "DRIVING";
 
     directionsService.route(
       {
@@ -47,19 +51,13 @@ export default function Directions({ map, directionsService }) {
         <div>
           <input type="text" id="to" placeholder="Where you dey go?" />
         </div>
-
-        <b>How you wan travel?</b>
-        <select id="mode">
-          <option value="DRIVING">Driving</option>
-          <option value="WALKING">Walking</option>
-        </select>
         <div className="directions">
           <div id="floating-panel">
             <button
               className="directions-button"
               onClick={calculateAndDisplayRoute}
             >
-              Show Me Road <i class="fa-solid fa-route"></i>
+              Show Me Road <i className="fa-solid fa-route"></i>
             </button>
           </div>
         </div>
