@@ -2,7 +2,7 @@
   "name": "along9ja",
   "version": "1.0.0",
   "description": "An along app for all Nigerians",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "build": "vite build",
     "dev": "vite",
