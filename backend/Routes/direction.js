@@ -2,7 +2,7 @@
 import userRequest from '../funcs/userRequest.js'
 import { getDirections } from '../funcs/mapDirectionRequest.js';
 import express from 'express';
-import { createUser, createAdmin, loginadmin, loginuser,isAdmin,isUser} from '../funtion_along/along.js';
+import { createUser, createAdmin, loginadmin, loginuser,isAdmin,isUser,isAuthenticated, logoutuser} from '../funtion_along/along.js';
 import passport from 'passport';
 
 
@@ -15,8 +15,19 @@ router.route("/loginuser").get((req, res)=>{
     } catch(err) {
         res.status(401).json({message: "pls input the right credential"})
     }
-}).post(loginuser);
-    
+}).post(loginuser, isUser);
+
+
+router.post('/logout' ,logoutuser); 
+
+router.get('/session', (req, res) => {
+    if (req.isAuthenticated()) {
+      res.json({ isLoggedIn: true, user: req.user });
+    } else {
+      res.json({ isLoggedIn: false });
+    }
+  });
+  
 
 router.post("/loginadmin", loginadmin);
 
@@ -55,7 +66,7 @@ router.route('/directions' )
         catch(err) {
             res.status(500).send('Error, try again.');
         }
-    });--
+    });
 
 // router.route('/new')
 //     .get((req, res) => {
