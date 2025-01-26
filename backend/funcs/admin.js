@@ -18,6 +18,16 @@ class Admin {
         return Users;
     }
 
+    getRoute(id) {
+        const Route =  this.Route.findById(id);
+        return Route;
+    }
+
+    getUser(id) {
+        const User =  this.User.findById(id);
+        return User;
+    }
+
     getAllAdmins() {
         const Admins =  this.AdminDB.find();
         return Admins;
@@ -31,3 +41,5 @@ class Admin {
 
     }
 }
+
+export default Admin;
