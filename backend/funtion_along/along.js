@@ -43,14 +43,21 @@ export  async function createUser(req, res) {
 
   export const loginuser = (req, res, next) => {
     passport.authenticate('user-local', (err, user, info) => {
-      if (err) return next(err);
-      if (!user) return res.status(401).json({ message: info.message });
+      if (err) return next(err); // Handle errors during authentication
+      if (!user) return res.status(401).json({ message: info.message }); // If user not found
   
       req.logIn(user, (err) => {
-        if (err) return next(err);
-        return res.status(200).json({ message: 'Login successful', redirect: '/Homepage' });
+        if (err) return next(err); // Handle errors during login
+  
+        // On successful login, return user info
+        return res.status(200).json({
+          message: 'Login successful',
+          user: { 
+            name: req.user.name // Return user's name
+          }
+        });
       });
-    })(req, res, next);
+    })(req, res, next); // Authenticate the request
   };
   
 
@@ -66,6 +73,30 @@ export  async function createUser(req, res) {
     })(req, res, next);
   };
   
+
+  export const logoutuser = (req, res, next) => {
+    if (req.isAuthenticated()) {
+      req.logout((err) => {
+        if (err) {
+          return next(err); // Handle error if logout fails
+        }
+        req.session.destroy((err) => {
+          if (err) {
+            return res.status(500).json({ message: 'Failed to destroy session during logout' });
+            console.log(err);
+          }
+          res.clearCookie('connect.sid'); // Clear the session cookie
+          return res.status(200).json({ message: 'Logout successful' });
+        });
+      });
+    } else {
+      res.status(401).json({ message: 'You are not logged in' }); 
+    }
+  };
+  
+  
+
+
 //   export const verifyToken = (req, res, next) => {
 //     const token = req.headers['authorization']?.split(' ')[1];
 //     if (!token) {
@@ -98,4 +129,10 @@ export function isUser(req, res, next) {
     return next();
   }
   res.status(403).json({ message: 'Forbidden: Users only' });
+}
+export function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.status(401).json({ message: 'Unauthorized: Please log in' });
 }

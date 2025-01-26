@@ -2,7 +2,7 @@
 import userRequest from '../funcs/userRequest.js'
 import { getDirections } from '../funcs/mapDirectionRequest.js';
 import express from 'express';
-import { createUser, createAdmin, loginadmin, loginuser,isAdmin,isUser} from '../funtion_along/along.js';
+import { createUser, createAdmin, loginadmin, loginuser,isAdmin,isUser,isAuthenticated, logoutuser} from '../funtion_along/along.js';
 import passport from 'passport';
 
 
@@ -15,8 +15,19 @@ router.route("/loginuser").get((req, res)=>{
     } catch(err) {
         res.status(401).json({message: "pls input the right credential"})
     }
-}).post(loginuser);
-    
+}).post(loginuser, isUser);
+
+
+router.post('/logout' ,logoutuser); 
+
+router.get('/session', (req, res) => {
+    if (req.isAuthenticated()) {
+      res.json({ isLoggedIn: true, user: req.user });
+    } else {
+      res.json({ isLoggedIn: false });
+    }
+  });
+  
 
 router.post("/loginadmin", loginadmin);
 
@@ -43,7 +54,7 @@ router.route('/directions' )
 
     .post(isUser,async (req, res) => {
         // need protection for this route, signin required
-        const { userLocation, destination } = req.body;
+        const { userLocation, destination } = req.body; 
         if (!userLocation || !destination) {
             res.status(400).send('Please provide a user location and destination');
         }
@@ -62,7 +73,7 @@ router.route('/directions' )
 //         res.send(`GET request to the new direction page`);
 //     })
 //     .post((req, res) => {
-//         const requestData = JSON.stringify(req.body);
+//         const requestData = JSON.stringify(req.body);-
 //     });
 
 router.route('/update')

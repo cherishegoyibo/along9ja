@@ -1,9 +1,26 @@
-export default function Navbar() {
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
+const Navbar = ({ user }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await fetch("http://localhost:5480/logout", {
+        method: "POST",
+        credentials: "include", // Include cookies to maintain session
+      });
+      navigate("/"); // Redirect to home page after logout
+    } catch (err) {
+      console.error("Logout Error:", err);
+    }
+  };
+
   return (
     <header>
       <div className="primary-header">
         <div className="header-logo">
-          <a href="/">
+          <a href="/home">
             <img
               src="./images/along9ja.png"
               alt="Along9ja logo"
@@ -23,7 +40,7 @@ export default function Navbar() {
           <ul className="nav-bar">
             <input type="checkbox" id="check" />
             <li className="nav-item">
-              <a href="/" className="nav-link">
+              <a href="/home" className="nav-link">
                 Home
               </a>
             </li>
@@ -42,15 +59,19 @@ export default function Navbar() {
                 About Us
               </a>
             </li>
-            <button className="nav-item nav-hover" type="button">
-              <a href="/sign-up" className="nav-link">
-                Sign Up
-                <i className="fa-solid arrow fa-arrow-right-to-bracket"></i>
-              </a>
-            </button>
+            {user && ( // Only display the logout button if the user is logged in
+              <li className="nav-item">
+                <button onClick={handleLogout} className="logout-btn" type="button">
+                  Logout
+                  <i className="fa-solid arrow fa-arrow-right-to-bracket"></i>
+                </button>
+              </li>
+            )}
           </ul>
         </nav>
       </div>
     </header>
   );
-}
+};
+
+export default Navbar;

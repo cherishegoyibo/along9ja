@@ -5,6 +5,7 @@ import session from 'express-session';
 import connectDB from './config/mongo.js';
 import passport from 'passport';
 import "./funtion_along/passport.js";
+import cors from 'cors';
 
 connectDB();
 
@@ -14,6 +15,12 @@ app.use(express.urlencoded({ extended: true}));
 app.use(session({ secret: "1234567", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+const corsOptions = {
+    origin: 'http://localhost:5173', 
+    credentials: true, 
+  };
+  
+  app.use(cors(corsOptions));
 
 
 
