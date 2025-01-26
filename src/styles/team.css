@@ -1,0 +1,133 @@
+.hero {
+  background: rgb(50, 50, 50);
+  background-image: url("../images/pexels-daniel-sikpi-191282566-11390779.jpg");
+  background-blend-mode: overlay;
+  height: 400px;
+  color: white;
+  display: block;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  position: relative;
+  top: 100px;
+  bottom: 100px;
+  text-align: center;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.p-text-two {
+  font-size: 1.2rem;
+  line-height: 26px;
+  padding-bottom: 15px;
+  font-weight: 200;
+}
+
+.team-row {
+  width: 80%;
+  max-width: 2170px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 50px 10px;
+}
+
+.team-row,
+.left {
+  overflow: hidden;
+}
+
+.team-row,
+.left,
+.image-side {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.who,
+.team-a {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.team-row,
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.team-row,
+.right,
+.text-content {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 10px;
+}
+.team-row,
+.right,
+.text-content,
+.p-text {
+  text-align: center;
+  font-size: 16px;
+  line-height: 26px;
+  padding-bottom: 15px;
+}
+
+.main-row {
+  padding-top: 50px;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  line-height: 26px;
+  padding-bottom: 55px;
+}
+
+.heading-3 {
+  font-size: 32px;
+  padding: 10px;
+}
+
+h2 {
+  color: burlywood;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.who {
+  font-size: 40px;
+  color: burlywood;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+/* Right section */
+
+/* Media Queries */
+
+@media (max-width: 991px) {
+  .team-row,
+  .right,
+  .text-content,
+  .heading-3 {
+    padding-left: 0;
+    padding-top: 10px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768) {
+  .team-row,
+  .heading-3 {
+    width: 90px;
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 16px;
+  }
+}

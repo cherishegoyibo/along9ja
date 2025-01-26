@@ -13,17 +13,16 @@ export default function Services() {
           <p className="section-subtitle">{message}</p>
           <span>
             <br />
-            <h3>WHY?</h3>
+            <h2>What Makes Us Unique</h2>
             <p>
-              Navigating public transport in Nigeria can be challenging, leaving
-              passengers confused, lost, or at risk. Our platform bridges this
-              gap by providing reliable, crowdsourced directions and safety
-              tips, making travel safer and more convenient.
+              We focus on the unique challenges of public transport in emerging
+              markets, leveraging crowdsourcing to deliver personalized, locally
+              relevant, and safety-conscious navigation solutions.
             </p>
           </span>
           <span>
             <br />
-            <h3>MISSION</h3>
+            <h2>MISSION</h2>
             <p>
               To empower public transport passengers with accurate, real-time
               navigation and safety information, fostering a seamless and secure
@@ -32,7 +31,7 @@ export default function Services() {
           </span>
           <span>
             <br />
-            <h3>VISION</h3>
+            <h2>VISION</h2>
             <p>
               To be the go-to platform for public transport navigation,
               transforming the way people travel in Nigeria and beyond.
@@ -40,7 +39,7 @@ export default function Services() {
           </span>
           <span>
             <br />
-            <h3>OUR STORY</h3>
+            <h2>OUR STORY</h2>
             <p>
               Born out of the frustration of navigating public transport without
               reliable guidance, we envisioned a solution that would combine the
