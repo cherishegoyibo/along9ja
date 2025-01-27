@@ -4,32 +4,45 @@ import {  useNavigate } from "react-router-dom";
 import { checkSession } from "./layout";
 
 
-export default function Home() {
 
-  const [user, setUser] = useState(null); // To store user details
-  const navigate = useNavigate(); // To navigate to other page
-    useEffect(() => {
-      const fetchUserData = async () => {
+export default function Home() {
+  const [user, setUser] = useState(() => {
+    // Initialize state from localStorage if available
+    const storedUser = localStorage.getItem("userSession");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      if (!user) {
         const sessionData = await checkSession();
         if (sessionData?.isLoggedIn) {
           setUser(sessionData.user);
+          localStorage.setItem("userSession", JSON.stringify(sessionData.user)); // Save to localStorage
+          console.log(sessionData.user);
+        } else {
+          navigate("/"); // Redirect to login if session is invalid
         }
-      };
-  
-      fetchUserData();
-    }, []);
+      }
+    };
 
-      
+    fetchUserData();
+  }, [user, navigate]);
+
+ 
+
+  console.log("johnyyyy",user);
 
   if (user === null) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>; // Show a loading message while user data is being fetched
   }
-
 
   return (
     <div style={{ textAlign: "center", color: "#ffc700", marginTop: "10px" }}>
-    {/* <Navbar user={user} /> */}
-        <h1>Welcome to Along9ja! {user.name}</h1>
+      <h1>Welcome to Along9ja! {user.user.name}</h1>
+      {console.log("leggg",user)}
       <SharedMapContent />
     </div>
   );

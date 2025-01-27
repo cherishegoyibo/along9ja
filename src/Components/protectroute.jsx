@@ -1,13 +1,9 @@
-import React from "react";
-import { Route, Navigate } from "react-router-dom";
 
-// ProtectedRoute checks if the user is logged in
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+
 const ProtectedRoute = ({ user, children }) => {
-  if (!user) {
-    return <Navigate to="/" replace />; // Redirect to login if no user
-  }
-
-  return children; // Allow access to children if user is logged in
+    return user ? children : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;

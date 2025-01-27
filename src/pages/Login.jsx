@@ -29,6 +29,9 @@ const Login = () => {
         }
       );
       console.log(response?.data);
+      const userData = response.data;
+
+    localStorage.setItem("userSession", JSON.stringify(userData));
       setEmail("");
       setPassword("");
       navigate("/home");

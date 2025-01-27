@@ -2,6 +2,10 @@
 
 export const checkSession = async () => {
     try {
+      const sessionData = localStorage.getItem("userSession");
+      if (sessionData) {
+        return JSON.parse(sessionData);
+      }
       const response = await fetch("http://localhost:5480/session", {
         method: "GET",
         credentials: "include",
@@ -10,7 +14,10 @@ export const checkSession = async () => {
         throw new Error("Failed to fetch session");
       }
       const data = await response.json();
-      return data; // Return session info (e.g., isLoggedIn, user)
+      localStorage.setItem("userSession", JSON.stringify(data));
+      console.log( "logtgg",data);
+      return data;
+      // Return session info (e.g., isLoggedIn, user)
     } catch (err) {
       console.error("Session Check Error:", err);
       return null; // Return null if there's an error
