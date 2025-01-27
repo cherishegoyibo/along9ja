@@ -32,9 +32,12 @@ const Login = () => {
       const userData = response.data;
 
     localStorage.setItem("userSession", JSON.stringify(userData));
+    // setUser(userData);
       setEmail("");
       setPassword("");
+      console.log("navigating to /home");
       navigate("/home");
+      // window.location.reload();
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");

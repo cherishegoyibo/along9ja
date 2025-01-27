@@ -83,7 +83,7 @@ export  async function createUser(req, res) {
         req.session.destroy((err) => {
           if (err) {
             return res.status(500).json({ message: 'Failed to destroy session during logout' });
-            console.log(err);
+        
           }
           res.clearCookie('connect.sid'); // Clear the session cookie
           return res.status(200).json({ message: 'Logout successful' });
