@@ -37,7 +37,7 @@ const Login = () => {
       setPassword("");
       console.log("navigating to /home");
       navigate("/home");
-      // window.location.reload();
+      window.location.reload();
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");

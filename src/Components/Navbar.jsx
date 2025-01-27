@@ -12,10 +12,11 @@ const Navbar = ({ user }) => {
       });
       localStorage.removeItem("userSession");
       navigate("/"); // Redirect to home page after logout
-      alert("You have logged out successfully.");
+      
     } catch (err) {
       console.error("Logout Error:", err);
     }
+    
   };
 
   return (
