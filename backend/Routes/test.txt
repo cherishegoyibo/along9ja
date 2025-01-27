@@ -1,0 +1,18 @@
+waypoints: [
+    {
+      "lat": 9.056562949033335,
+      "lng": 7.499279379846991,
+      "instruction": "Drop here and go to the top of the bridge"
+    },
+    {
+      "lat": 9.08130366881753,
+      "lng": 7.4663676851701695,
+      "instruction": "Drop here and take a walk to the left hand side"
+    }
+  ]
+  
+
+
+
+from: Jikwoyi
+to: Banex Plaza
