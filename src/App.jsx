@@ -8,6 +8,7 @@ import ExploreRoutes from "./pages/ExploreRoutes";
 import NearbyBuses from "./pages/NearbyBuses";
 import Login from "./pages/Login";
 import checkSession from "../src/pages/layout";
+import ProtectedRoute from "../src/Components/protectroute";
 
 export default function App() {
   const location = useLocation();
@@ -31,11 +32,19 @@ export default function App() {
       {!noNavbarRoutes.includes(location.pathname) && <Navbar user={user} />}
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/explore-routes" element={<ExploreRoutes />} />
-        <Route path="/nearby-buses" element={<NearbyBuses />} />
         <Route path="/sign-up" element={<SignUp />} />
+        {/* // protected route */}
+        <Route path="/home"element={<Home />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route
+          path="/explore-routes"
+          element={
+            <ProtectedRoute user={user}>
+              <ExploreRoutes />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/nearby-buses" element={ <ProtectedRoute><NearbyBuses /></ProtectedRoute>  } />
       </Routes>
     </>
   );
