@@ -9,7 +9,7 @@ import axios from "../api/axios";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = "/signUp";
+const REGISTER_URL = "http://localhost:5000/createUser";
 
 const SignUp = () => {
   const emailRef = useRef();
@@ -58,7 +58,7 @@ const SignUp = () => {
     }
     try {
       const response = await axios.post(
-        REGISTER_URL,
+        "/createUser",
         JSON.stringify({ email, pwd }),
         {
           headers: { "Content-Type": "application/json" },
@@ -69,8 +69,7 @@ const SignUp = () => {
       console.log(response?.accessToken);
       console.log(JSON.stringify(response));
       setSuccess(true);
-      /*clear state and controlled inputs
-      need value attribute on inputs for this */
+
       setUser("");
       setPwd("");
       setMatchPwd("");

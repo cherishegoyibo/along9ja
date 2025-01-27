@@ -5,14 +5,23 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": {
-        target: "http://localhost:3000",
-        changeOrigin: true,
-      },
-      "/backend": {
+      "/createUser": {
         target: "http://localhost:5000",
         changeOrigin: true,
       },
+      "/loginuser": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+      },
+      "/loginadmin": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+      },
+      "/directions": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+      },
+      // Add more routes if needed
     },
   },
   build: {

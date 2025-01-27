@@ -20,8 +20,7 @@ export default function SharedMapContent() {
   useEffect(() => {
     const loadGoogleMapsScript = () => {
       const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB-sVqTP5Rc_nVFpiF_pBAOOaysNVCUevc
-&callback=initMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB-sVqTP5Rc_nVFpiF_pBAOOaysNVCUevc&libraries=places&callback=initMap`;
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
