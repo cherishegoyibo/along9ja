@@ -1,19 +1,16 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const uri = "mongodb+srv://along9ja:0267419026@along9ja.nxr5r.mongodb.net/along9jadb?retryWrites=true&w=majority&appName=along9ja";
-
-const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
-
-export default async function connectDB() {
+const connectDB = async () => {
   try {
-    await mongoose.connect(uri, clientOptions);
-    await mongoose.connection.db.admin().command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } catch (error){
-    console.log("Error connecting to MongoDB:", error.message)
-  }finally {
-    // await mongoose.disconnect();
-    console.log('completed cycle');
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("MongoDB connected successfully");
+  } catch (error) {
+    console.error("MongoDB connection error:", error);
+    process.exit(1);
   }
 };
 
+export default connectDB;
