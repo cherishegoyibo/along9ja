@@ -18,10 +18,20 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.use(cors({
-  origin: 'https://along9ja.onrender.com',
-  credentials: true,
-}));
+const allowedOrigins = ['https://along9ja.onrender.com', 'http://127.0.0.1:5173']; // Add more allowed origins if needed
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) { // Allow if origin is in the list or is undefined (for same-origin requests)
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 
 
