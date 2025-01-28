@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 
-const REGISTER_URL = 'https://along9ja.onrender.com/createUser';
+const REGISTER_URL = 'https://along9ja-backend.onrender.com/createUser';
 
 
 import {

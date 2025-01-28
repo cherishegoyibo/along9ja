@@ -6,7 +6,7 @@ const Navbar = ({ user }) => {
 
   const handleLogout = async () => {
     try {
-      await fetch("https://along9ja.onrender.com/logout", {
+      await fetch("https://along9ja-backend.onrender.com/logout", {
         method: "POST",
         credentials: "include", // Include cookies to maintain session
       });

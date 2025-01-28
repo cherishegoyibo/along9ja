@@ -5,7 +5,7 @@ import axios from "axios";
 
 import "../styles/Login.css";
 
-const LOGIN_URL = "https://along9ja.onrender.com/loginuser"; // Replace with your backend endpoint
+const LOGIN_URL = "https://along9ja-backend.onrender.com/loginuser"; // Replace with your backend endpoint
 
 const Login = () => {
   const [email, setEmail] = useState("");

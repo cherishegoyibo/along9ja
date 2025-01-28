@@ -6,7 +6,7 @@ export const checkSession = async () => {
       if (sessionData) {
         return JSON.parse(sessionData);
       }
-      const response = await fetch("https://along9ja.onrender.com/session", {
+      const response = await fetch("https://along9ja-backend.onrender.com/session", {
         method: "GET",
         credentials: "include",
       });
