@@ -19,7 +19,8 @@ app.use(passport.session());
 
 
 app.use(cors({
-  origin: 'https://along9ja.onrender.com', // or use the actual domain of the frontend when deployed
+  origin: 'https://along9ja.onrender.com',
+  credentials: true,
 }));
 
 
