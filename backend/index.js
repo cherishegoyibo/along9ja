@@ -11,33 +11,31 @@ import dotenv from 'dotenv';
 connectDB();
 
 const app = express();
+
+// Allow specific origins
+const allowedOrigins = [
+  'https://along9ja.onrender.com', // Your production frontend
+  'http://127.0.0.1:5173' // Optional: Keep local dev access
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true // If using cookies/auth headers
+}));
+
+
+
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
-app.use(session({ secret: "1234567", resave: false, saveUninitialized: true }));
+app.use(session({ secret: "1234567", resave: false, saveUninitialized: true,
+  cookie: { secure: true, sameSite: 'none' }
+ }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 
-const allowedOrigins = ['https://along9ja.onrender.com', 'http://127.0.0.1:5173']; // Add more allowed origins if needed
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) { // Allow if origin is in the list or is undefined (for same-origin requests)
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true, // Allow credentials (cookies, sessions, etc.)
-  optionsSuccessStatus: 200 // For older browsers
-};
-
-app.use(cors(corsOptions));
-
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  next();
-});
 
 
 
