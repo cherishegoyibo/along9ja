@@ -9,15 +9,16 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "0.0.0.0:3000",
+        target: "http://localhost:3000",
         changeOrigin: true,
       },
       "/backend": {
-        target: "0.0.0.0:5000",
+        target: "http://localhost:5000",
         changeOrigin: true,
       },
     },
     port: PORT || 3000,
+    host: "0.0.0.0",
   },
   build: {
     sourcemap: true,
