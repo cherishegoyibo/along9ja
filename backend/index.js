@@ -17,18 +17,18 @@ app.use(session({ secret: "1234567", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-const allowedOrigins = ['http://localhost', 'http://127.0.0.1', 'https://along9ja.onrender.com/'];
+// const allowedOrigins = ['http://localhost', 'http://127.0.0.1', 'https://along9ja.onrender.com/'];
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true // Include if using cookies/auth
-}));
+// app.use(cors({
+//   origin: (origin, callback) => {
+//     if (allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   credentials: true // Include if using cookies/auth
+// }));
 
 
 
