@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { isAdmin, isUser } from '../middleware/auth';
-import { Admin } from '../funcs/admin';
+import { isAdmin, isUser } from '../funtion_along/along.js';
+import Admin from '../funcs/admin.js';
 const router = Router();
 const admin = new Admin();
 
@@ -80,7 +80,7 @@ router.route('/route/:id' )
     }
 });
 
-export default router;
+export default Router;
 
 // add to direction.js
 // import adminRouter from './admin.js';

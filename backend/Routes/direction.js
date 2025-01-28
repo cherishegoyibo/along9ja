@@ -6,6 +6,8 @@ import { createUser, createAdmin, loginadmin, loginuser,isAdmin,isUser,isAuthent
 import passport from 'passport';
 import { addRoute } from '../funcs/adddRoutes.js';
 import adminRouter from './admin.js';
+import Admin from '../funcs/admin.js';
+const admin = new Admin();
 
 
 const router = express.Router();
@@ -120,6 +122,82 @@ router.get("/auth/google", passport.authenticate("google", { scope: ["profile", 
         }
       );
 
-router.use('/admin', adminRouter);
+
+//admin more functionality
+
+router.route('/admin/users')
+    .get(isAdmin, (req, res) => {
+        try {
+            res.send(admin.getAllUsers());
+        } catch (err) {
+            res.status(401).json({ message: 'You are not authorized to view this page' });
+        }
+    });
+
+router.route('/admin/routes')
+.get(isAdmin, (req, res) => {
+    try {
+        res.send(admin.getAllRoutes());
+    } catch (err) {
+        res.status(401).json({ message: 'You are not authorized to view this page' });
+    }
+});
+
+router.route('/admin/admins')
+.get(isAdmin, (req, res) => {
+    try {
+        res.send(admin.getAllAdmins());
+    } catch (err) {
+        res.status(401).json({ message: 'You are not authorized to view this page' });
+    }
+});
+
+// All the routes in this file will be prefixed with /direction
+router.route('/admin/user/:id' )
+    .get(isAdmin, (req, res) => {
+        try {
+            res.send(admin.getUser(req.params.id));
+        } catch (err) {
+            res.status(401).json({ message: 'You are not authorized to view this page' });
+        }})
+
+    .post(isUser,async (req, res) => {
+        const { id, data } = req.body;
+        if (!id || !data) {
+            res.status(400).send('Please provide a user id and data');
+        }
+
+        try {
+            const user = await admin.UpdateUser(id, data);
+            res.send(user);
+        } 
+        catch(err) {
+            res.status(500).send('Error, try again.');
+        }
+    });
+
+router.route('/admin/route/:id' )
+.get(isAdmin, (req, res) => {
+    try {
+        res.send(admin.getUser(req.params.id));
+    } catch (err) {
+        res.status(401).json({ message: 'You are not authorized to view this page' });
+    }})
+
+.post(isUser,async (req, res) => {
+    const { id, data } = req.body;
+    if (!id || !data) {
+        res.status(400).send('Please provide a user id and data');
+    }
+
+    try {
+        const user = await admin.UpdateRoute(id, data);
+        res.send(user);
+    } 
+    catch(err) {
+        res.status(500).send('Error, try again.');
+    }
+});
+
 
 export default router;
