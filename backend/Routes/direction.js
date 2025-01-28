@@ -5,6 +5,7 @@ import express from 'express';
 import { createUser, createAdmin, loginadmin, loginuser,isAdmin,isUser,isAuthenticated, logoutuser} from '../funtion_along/along.js';
 import passport from 'passport';
 import { addRoute } from '../funcs/adddRoutes.js';
+import adminRouter from './admin.js';
 
 
 const router = express.Router();
@@ -119,5 +120,6 @@ router.get("/auth/google", passport.authenticate("google", { scope: ["profile", 
         }
       );
 
+router.use('/admin', adminRouter);
 
 export default router;
