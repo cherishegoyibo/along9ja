@@ -6,6 +6,7 @@ import connectDB from './config/mongo.js';
 import passport from 'passport';
 import "./funtion_along/passport.js";
 import cors from 'cors';
+import dotenv from 'dotenv';
 
 connectDB();
 
@@ -45,7 +46,7 @@ app.use('/', routes);
 // });
 
 // Start the server
-const PORT = 5480;
+const PORT = process.env.PORT || 5480;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
