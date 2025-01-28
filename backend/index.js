@@ -17,7 +17,7 @@ app.use(session({ secret: "1234567", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-const allowedOrigins = ['http://localhost:5173', 'http://127.0.0.1:5173', 'https://along9ja.onrender.com/'];
+const allowedOrigins = ['http://localhost', 'http://127.0.0.1', 'https://along9ja.onrender.com/'];
 
 app.use(cors({
   origin: (origin, callback) => {
