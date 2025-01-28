@@ -47,6 +47,6 @@ app.use('/', routes);
 
 // Start the server
 // const PORT = process.env.BPORT || 11000;
-app.listen( () => {
+app.listen(process.env.PORT, '0.0.0.0', () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
