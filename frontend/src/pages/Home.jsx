@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from "react";
 import SharedMapContent from "../Components/SharedMapContent";
 import {  useNavigate } from "react-router-dom";
 import { checkSession } from "./layout";
+import "../styles/home.css";
 
 
 
@@ -40,10 +41,11 @@ export default function Home() {
   }
 
   return (
-    <div style={{ textAlign: "center", color: "#ffc700", marginTop: "10px" }}>
-      <h1>Welcome to Along9ja! {user.user.name}</h1>
-      {console.log("leggg",user)}
+    <div className="home-cc">
+      <h1>Your Face Show! &#x27A1; &#x1F31F;{user.user.name}</h1>
+
       <SharedMapContent />
     </div>
+    
   );
 }
