@@ -4,7 +4,9 @@
   "description": "## DESCRIPTION",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm install && npm start",
+    "client": "cd frontend && npm install && npm start"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,9 @@
     "url": "https://github.com/cherishegoyibo/along9ja/issues"
   },
   "homepage": "https://github.com/cherishegoyibo/along9ja#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  },
   "devDependencies": {
     "concurrently": "^9.1.2"
   }
