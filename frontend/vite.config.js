@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import "dotenv/config";
 
-const FPORT = process.env.FPORT;
+const PORT = process.env.FPORT;
 
 export default defineConfig({
   plugins: [react()],
@@ -17,7 +17,7 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
-    port: FPORT || 3000,
+    port: PORT || 3000,
   },
   build: {
     sourcemap: true,
