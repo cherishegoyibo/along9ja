@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import "dotenv/config";
+import dotenv from 'dotenv';
 
 const PORT = process.env.FPORT;
 
@@ -18,7 +18,6 @@ export default defineConfig({
       },
     },
     port: PORT || 3000,
-    host: "0.0.0.0",
   },
   build: {
     sourcemap: true,
