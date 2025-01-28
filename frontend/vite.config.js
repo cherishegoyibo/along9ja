@@ -17,7 +17,7 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
-    port: PORT || 3000,
+    port: PORT || 5400,
   },
   build: {
     sourcemap: true,
