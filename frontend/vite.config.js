@@ -2,28 +2,34 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import dotenv from 'dotenv';
 
-const PORT = process.env.FPORT;
+// Load environment variables from .env file (if applicable)
+dotenv.config();
 
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    proxy: {
-      "/api": {
-        target: "http://localhost:3000",
-        changeOrigin: true,
+// Get port from environment variables, fallback to 5400
+const PORT = process.env.PORT || 5400;
+
+export default defineConfig(({ command }) => {
+  return {
+    plugins: [react()],
+    server: {
+      proxy: {
+        "/api": {
+          target: "http://localhost:3000",
+          changeOrigin: true,
+        },
+        "/backend": {
+          target: "http://localhost:5000",
+          changeOrigin: true,
+        },
       },
-      "/backend": {
-        target: "http://localhost:5000",
-        changeOrigin: true,
-      },
+      host: '0.0.0.0',
+      port: PORT,
+      allowedHosts: command === 'serve' 
+        ? ['along9ja.onrender.com'] // Production host
+        : ['localhost'], // Development host
     },
-    host: '0.0.0.0',
-    port: PORT || 5400,
-    allowedHosts: command === 'serve' 
-      ? ['along9ja.onrender.com'] // Production host
-      : ['localhost']
-  },
-  build: {
-    sourcemap: true,
-  },
+    build: {
+      sourcemap: true,
+    },
+  };
 });
