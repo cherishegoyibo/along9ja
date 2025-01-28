@@ -4,7 +4,7 @@
   "description": "An along app for all Nigerians (Frontend)",
   "main": "index.jsx",
   "scripts": {
-    "start": "vite",
+    "start": "vite --host 0.0.0.0 --port $PORT",
     "build": "vite build",
     "serve": "vite preview"
   },

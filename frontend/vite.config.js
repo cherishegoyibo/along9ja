@@ -17,6 +17,7 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
+    host: '0.0.0.0',
     port: PORT || 5400,
   },
   build: {
