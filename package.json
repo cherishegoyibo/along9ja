@@ -6,12 +6,11 @@
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd backend && npm install && npm start",
-    "client": "cd frontend && npm install && npm start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "cd frontend && npm install && npm start"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://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@github.com/cherishegoyibo/along9ja.git"
+    "url": "https://@github.com/cherishegoyibo/along9ja.git"
   },
   "keywords": [],
   "author": "",

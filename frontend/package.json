@@ -4,13 +4,9 @@
   "description": "An along app for all Nigerians (Frontend)",
   "main": "index.jsx",
   "scripts": {
-    "build": "vite build",
     "start": "vite",
-    "dev": "vite",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,html,css,scss,md}\"",
-    "preview": "vite preview",
-    "lint": "eslint",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "repository": {
     "type": "git",
