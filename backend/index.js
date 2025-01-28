@@ -28,12 +28,16 @@ const corsOptions = {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  optionsSuccessStatus: 200
+  credentials: true, // Allow credentials (cookies, sessions, etc.)
+  optionsSuccessStatus: 200 // For older browsers
 };
 
 app.use(cors(corsOptions));
 
-
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 
 
 
