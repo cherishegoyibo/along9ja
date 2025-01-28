@@ -42,8 +42,6 @@ export  async function createUser(req, res) {
   
 
   export const loginuser = (req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-    res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5173'); // Add this line
     passport.authenticate('user-local', (err, user, info) => {
       if (err) return next(err); // Handle errors during authentication
       if (!user) return res.status(401).json({ message: info.message }); // If user not found

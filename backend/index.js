@@ -9,6 +9,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 connectDB();
+dotenv.config();
 
 const app = express();
 
@@ -30,12 +31,25 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 app.use(session({ secret: "1234567", resave: false, saveUninitialized: true,
-  cookie: { secure: true, sameSite: 'none' }
+  cookie: { secure: true, sameSite: 'none', maxAge: 6000000 }
  }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 
+app.options('*', cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
+
+
+
+
+app.use((err, req, res, next) => {
+  res.header('Access-Control-Allow-Origin', allowedOrigins);
+  res.header('Access-Control-Allow-Credentials', true);
+  res.status(err.status || 500).json({ error: err.message });
+});
 
 
 
