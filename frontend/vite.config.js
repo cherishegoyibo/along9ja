@@ -19,6 +19,9 @@ export default defineConfig({
     },
     host: '0.0.0.0',
     port: PORT || 5400,
+    allowedHosts: command === 'serve' 
+      ? ['along9ja.onrender.com'] // Production host
+      : ['localhost']
   },
   build: {
     sourcemap: true,
