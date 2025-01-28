@@ -19,7 +19,7 @@ app.use(passport.session());
 
 
 app.use(cors({
-  origin: `http://localhost:${process.env.PORT}`, // or use the actual domain of the frontend when deployed
+  origin: `https://along9ja.onrender.com/`, // or use the actual domain of the frontend when deployed
 }));
 
 
@@ -39,6 +39,6 @@ app.use('/', routes);
 
 // Start the server
 // const PORT = process.env.BPORT || 11000;
-app.listen(process.env.PORT || 1544, () => {
+app.listen(process.env.BPORT || 1544, () => {
     console.log(`Server running on http://localhost:${process.env.PORT}`);
 });
