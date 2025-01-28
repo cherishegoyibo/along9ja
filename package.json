@@ -10,8 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://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@github.com/cherishegoyibo/along9ja.git"
+    "type": "git"
+    // "url": "git+https://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@github.com/cherishegoyibo/along9ja.git"
   },
   "keywords": [],
   "author": "",
