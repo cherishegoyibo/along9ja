@@ -6,8 +6,7 @@
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd backend && npm install && npm start",
-    "client": "cd frontend && npm install && npm start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "cd frontend && npm install && npm start"
   },
   "repository": {
     "type": "git",
